@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDqUVu5xc7ad6YWhhH9bXXQmcNjAA9JoH0",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: "furtastic-fashion-cd4a7.firebaseapp.com",
   databaseURL: "https://furtastic-fashion-cd4a7-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "furtastic-fashion-cd4a7",
