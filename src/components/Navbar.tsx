@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
+import "./Navbar.css";
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+    <nav className="navbar navbar-expand-lg navbar-custom fixed-top p-3">
       <div className="container-fluid">
         <Link to="/" className="navbar-brand">
-          MyWebshop
+          Furtastic Fashion
         </Link>
         <button
           className="navbar-toggler"
