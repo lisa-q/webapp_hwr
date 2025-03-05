@@ -1,12 +1,7 @@
 import { useState } from "react";
 import "./ProductOverview.css";
 import { Link } from "react-router-dom";
-
-const products = [
-    { id: 1, name: "Stylischer Hundehoodie", image: "/src/assets/stylischer_hundehoodie.webp", price: "29,99€" },
-    { id: 2, name: "Magisches Katzenhalsband", image: "/src/assets/magisches_katzenhalsband.webp", price: "19,99€" },
-    { id: 3, name: "Eleganter Papageienhut", image: "/src/assets/eleganter_papageienhut.webp", price: "14,99€" }
-];
+import products from "../models/Product"; // Import der zentralen Produktliste
 
 const ProductOverview = () => {
     const [searchTerm, setSearchTerm] = useState("");
