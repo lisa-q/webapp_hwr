@@ -41,6 +41,14 @@ const Navbar = () => {
                 Impressum
               </Link>
             </li>
+            <li className="nav-item">
+              <Link
+                to="/cart"
+                className="nav-link d-flex align-items-center justify-content-center border rounded p-2"
+              >
+                <i className="bi bi-basket2-fill"></i>
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
