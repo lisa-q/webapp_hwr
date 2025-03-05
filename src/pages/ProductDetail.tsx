@@ -1,14 +1,14 @@
 import "./ProductDetail.css";
 import { useParams } from "react-router-dom";
 import products from "../models/Product";
+import { useCart } from "../context/CartContext";
 
 const ProductDetail = () => {
     const { id } = useParams<{ id: string }>();
+    const { addToCart } = useCart();
 
-    // Produkt aus der Liste holen
     const product = products.find((p) => p.id === id);
 
-    // Falls Produkt nicht gefunden wird, Fehlermeldung anzeigen
     if (!product) {
         return (
             <div className="text-center mt-5">
@@ -33,7 +33,9 @@ const ProductDetail = () => {
                         ))}
                     </p>
                     <p className="product-detail-price">{product.price}</p>
-                    <button className="btn btn-success btn-lg">In den Warenkorb</button>
+                    <button className="btn btn-success btn-lg" onClick={() => addToCart(product)}>
+                        In den Warenkorb
+                    </button>
                 </div>
             </div>
         </div>

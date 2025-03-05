@@ -1,10 +1,12 @@
 import { useState } from "react";
 import "./ProductOverview.css";
 import { Link } from "react-router-dom";
-import products from "../models/Product"; // Import der zentralen Produktliste
+import products from "../models/Product";
+import { useCart } from "../context/CartContext";
 
 const ProductOverview = () => {
     const [searchTerm, setSearchTerm] = useState("");
+    const { addToCart } = useCart();
 
     const filteredProducts = products.filter((product) =>
         product.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -35,6 +37,12 @@ const ProductOverview = () => {
                                 <Link to={`/product/${product.id}`} className="btn btn-success">
                                     Details ansehen
                                 </Link>
+                                <button
+                                    className="btn btn-primary mt-2"
+                                    onClick={() => addToCart(product)}
+                                >
+                                    In den Warenkorb
+                                </button>
                             </div>
                         </div>
                     ))
