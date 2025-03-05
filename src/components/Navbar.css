@@ -1,33 +1,23 @@
-.navbar {
-    background-color: #333;
-    padding: 1rem;
+.navbar-custom {
+    background-color: #bc8738; /* Deine Wunschfarbe - hier ein Beispiel (pink) */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav-logo {
-    color: white;
-    text-decoration: none;
-    font-size: 1.5rem;
+.navbar-custom .navbar-brand {
     font-weight: bold;
+    font-size: 1.5rem;
+    color: white; /* Farbe der Schrift */
 }
 
-.nav-menu {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
+.navbar-custom .nav-link {
+    color: white; /* Links-Farbe */
+    transition: color 0.3s ease;
 }
 
-.nav-item .nav-link {
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
+.navbar-custom .nav-link:hover {
+    color: #ffd700; /* Gold beim Hover */
 }
 
-.nav-item .nav-link:hover {
-    text-decoration: underline;
+.navbar-toggler {
+    border-color: white;
 }
