@@ -23,9 +23,6 @@ const productData: { [key: string]: { name: string; image: string; description: 
 };
 
 
-
-
-
 const ProductDetail = () => {
     const { id } = useParams<{ id: string }>();
     const product = productData[id || "1"];
