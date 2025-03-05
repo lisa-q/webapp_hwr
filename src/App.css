@@ -1,0 +1,8 @@
+#dynamic-content{
+    padding-top: 70px;
+    height: 100vh;
+    background-color: #fae5b7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
