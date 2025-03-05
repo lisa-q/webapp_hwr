@@ -22,17 +22,6 @@ const Impressum = () => {
                     <p>Saturday: 10:00 AM - 4:00 PM</p>
                     <p>Sunday: Closed</p>
 
-                    <h3 className="mt-4">Find Us</h3>
-                    <iframe
-                        className="google-map"
-                        src="https://maps.app.goo.gl/5n6Vo5orWZxdpsEX8"
-                        width="100%"
-                        height="300"
-                        style={{ border: 0 }}
-                        allowFullScreen
-                        loading="lazy"
-                    ></iframe>
-
                     <h3 className="mt-4">Contact Us</h3>
                     <form className="contact-form">
                         <div className="mb-3">

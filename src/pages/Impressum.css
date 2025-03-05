@@ -3,7 +3,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #FFFAF0; /* Warm cream tone */
+    background-color: #FFFAF0;
+    padding: 400px 20px 40px; /* Genug Platz für die Navbar */
+    overflow-y: auto;
 }
 
 .impressum-card {
@@ -39,3 +41,4 @@
 .contact-form button:hover {
     background-color: #A0522D;
 }
+
