@@ -1,0 +1,41 @@
+.impressum-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFAF0; /* Warm cream tone */
+}
+
+.impressum-card {
+    max-width: 800px;
+    background-color: #FFFAF0;
+    border-radius: 25px;
+    padding: 20px;
+}
+
+.impressum-title {
+    color: #D2691E;
+    font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    background-color: #D2691E;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #A0522D;
+}

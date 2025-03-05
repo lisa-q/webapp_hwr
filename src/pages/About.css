@@ -1,0 +1,19 @@
+.about-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFAF0; /* Warmer Creme-Ton */
+}
+
+.about-card {
+    max-width: 800px;
+    background-color: #FFFAF0;
+    border-radius: 25px;
+    padding: 20px;
+}
+
+.about-title {
+    color: #D2691E;
+    font-weight: bold;
+}
