@@ -4,8 +4,10 @@ import About from "./pages/About";
 import Impressum from "./pages/Impressum";
 import Navbar from "./components/Navbar";
 import Cart from "./pages/Cart";
+import ProductOverview from "./pages/ProductOverview";
+import ProductDetail from "./pages/ProductDetail";
 import "./App.css";
-import ShopPage from "./pages/Shop";
+
 import Checkout from "./pages/Checkout";
 
 function App() {
@@ -15,11 +17,12 @@ function App() {
       <div id="dynamic-content">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<ShopPage />} />
           <Route path="/about" element={<About />} />
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/shop" element={<ProductOverview />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
         </Routes>
       </div>
     </Router>
