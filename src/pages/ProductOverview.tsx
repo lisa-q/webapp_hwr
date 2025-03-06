@@ -51,7 +51,7 @@ const ProductOverview = () => {
               />
               <div className="card-body text-center">
                 <h5 className="product-name">{product.name}</h5>
-                <p className="product-price">{product.price}</p>
+                <p className="product-price">{product.price} €</p>
                 <Link to={`/product/${product.id}`} className="btn btn-success">
                   Details ansehen
                 </Link>

@@ -49,7 +49,7 @@ const ProductDetail = () => {
               </span>
             ))}
           </p>
-          <p className="product-detail-price">{product.price}</p>
+          <p className="product-detail-price">{product.price} €</p>
           <button
             className="btn btn-success btn-lg"
             onClick={() => handleAddToCart(product)}
