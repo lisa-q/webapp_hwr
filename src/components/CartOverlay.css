@@ -10,18 +10,6 @@
     padding: 15px;
     z-index: 1050;
   }
-
-  .cart-items-container {
-    max-height: 290px;
-    overflow-y: auto;
-    margin-bottom: 10px;
-  }
-  
-  .cart-content {
-    max-height: 400px;
-    overflow-y: auto;
-  }
-  
   .close-btn {
     background: none;
     border: none;
@@ -32,15 +20,8 @@
     right: 10px;
   }
   
-  .cart-items {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
   
-  .cart-items-container {
-    max-height: 290px;
-    overflow-y: auto;
-  }
+  
+  
   
   

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { CartItem } from "../models/types";
 import { useNavigate } from "react-router-dom";
-
-import CartItemComponent from "../components/CartItemComponent";
 import "./Cart.css";
 import CartFirebaseService from "../services/CartFirebaseService";
+import CartItemList from "../components/CartItemList";
 
 const Cart: React.FC = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -18,17 +17,8 @@ const Cart: React.FC = () => {
     fetchCartItems();
   }, []);
 
-  const handleDeleteItem = async (id: string) => {
-    try {
-      await CartFirebaseService.removeFromCart(id);
-      setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   const handleOpenCheckout = () => {
-    navigate("/checkout", { state: { cartItems } });
+    navigate("/checkout");
   };
 
   return (
@@ -38,17 +28,7 @@ const Cart: React.FC = () => {
         <p>Dein Warenkorb ist leer.</p>
       ) : (
         <>
-          <div className="cart-items-wrapper">
-            <ul className="list-cartItems">
-              {cartItems.map((item) => (
-                <CartItemComponent
-                  key={item.id}
-                  cartItem={item}
-                  onDelete={handleDeleteItem}
-                />
-              ))}
-            </ul>
-          </div>
+          <CartItemList />
           <div className="cart-total">
             <h2>
               Gesamt:{" "}
