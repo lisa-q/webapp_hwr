@@ -1,0 +1,53 @@
+{ "products":
+    [
+    {
+        "name": "Stylisches Hunde-T-Shirt",
+        "price": 19.99,
+        "image": "/src/assets/dog.avif"
+    },
+    {
+        "name": "Kuscheliger Katzenpullover",
+        "description": "Weicher Pullover für Katzen, perfekt für kalte Tage.",
+        "price": 24.99,
+        "image": "/src/assets/hamster.avif"
+
+    },
+    {
+        "name": "Hundeschal mit Muster",
+        "description": "Trendiger Schal für modebewusste Hunde.",
+        "price": 14.99,
+        "image": "/src/assets/fox.avif"
+
+    },
+    {
+        "name": "Regenjacke für kleine Hunde",
+        "price": 34.99,
+        "image": "/src/assets/dog.avif"
+
+    },
+    {
+        "name": "Lederhalsband mit Gravur",
+        "price": 29.99,
+        "image": "/src/assets/hamster.avif"
+
+    },
+    {
+        "name": "Katzenschal aus Wolle",
+        "price": 17.99,
+        "image": "/src/assets/fox.avif"
+
+    },
+    {
+        "name": "Weihnachtspullover für Hunde",
+        "price": 22.99,
+        "image": "/src/assets/hamster.avif"
+
+    },
+    {
+        "name": "Sonnenbrille für Hunde",
+        "price": 12.99,
+        "image": "/src/assets/fox.avif"
+
+    }
+]
+}
