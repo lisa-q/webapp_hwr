@@ -1,0 +1,90 @@
+/* Checkout Container */
+.checkout-container {
+    width: 1000px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Section Headers */
+  .checkout-container h2,
+  .checkout-container h4 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  /* Order Summary */
+  .cart-items ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .cart-items li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Forms */
+  .checkout-container form {
+    background: #fff5e1;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  
+  .checkout-container label {
+    font-weight: bold;
+  }
+  
+  .checkout-container input,
+  .checkout-container select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+  }
+  
+  /* Button */
+  .checkout-container .btn-warning {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  
+  .checkout-layout {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .checkout-left {
+    flex: 1;
+    border-left: 1px solid #ddd;
+    padding-left: 15px;
+  }
+  
+  .checkout-right {
+    flex: 1;
+  }
+  
+  .address-form,
+  .shipping-form,
+  .payment-form {
+    width: 100%;
+    background: #fff5e1;
+    padding: 15px;
+    border-radius: 5px;
+  }
+
+  .total-price {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 25px;
+  }
+  
+  
