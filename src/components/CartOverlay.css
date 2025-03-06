@@ -14,6 +14,7 @@
   .cart-items-container {
     max-height: 290px;
     overflow-y: auto;
+    margin-bottom: 10px;
   }
   
   .cart-content {
