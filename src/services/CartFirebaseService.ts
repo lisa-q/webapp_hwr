@@ -1,6 +1,6 @@
 import { CartItem } from "../models/types";
 import { db } from "../../firebaseConfig";
-import { ref, set, get, remove } from "firebase/database";
+import { ref, set, get, remove, push } from "firebase/database";
 
 class CartFirebaseService {
     private static getDeviceId(): string {
@@ -42,6 +42,33 @@ class CartFirebaseService {
         const dataRef = ref(db, `carts/${deviceId}/${cartItemId}`);
         await remove(dataRef);
     }
+
+    static async placeOrder(): Promise<void> {
+        const deviceId = this.getDeviceId();
+        const cartItems = await this.getCurrentCart();
+    
+        if (cartItems.length === 0) {
+            throw new Error("Cart is empty, cannot place order.");
+        }
+    
+        const totalPrice = cartItems.reduce((sum, item) => {
+            return sum + (item.price * (item.quantity ?? 1));
+        }, 0);
+    
+        const ordersListRef = ref(db, `orders/${deviceId}`);
+        const newOrderRef = push(ordersListRef);
+    
+        await set(newOrderRef, {
+            createdAt: new Date().toISOString(),
+            items: cartItems,
+            totalPrice: parseFloat(totalPrice.toFixed(2))
+        });
+    
+        const cartRef = ref(db, `carts/${deviceId}`);
+        await remove(cartRef);
+    }
+    
+    
 }
 
 export default CartFirebaseService;
