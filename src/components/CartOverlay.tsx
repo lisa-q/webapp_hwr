@@ -24,7 +24,6 @@ const CartOverlay = ({ onClose }: { onClose: () => void }) => {
   const handleDeleteItem = async (id: string) => {
     await CartFirebaseService.removeFromCart(id);
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
-    console.log("Item gelöscht:", id);
   };
 
   return (
@@ -49,9 +48,11 @@ const CartOverlay = ({ onClose }: { onClose: () => void }) => {
             <p>Dein Warenkorb ist leer.</p>
           )}
         </div>
-        <button className="btn btn-outline-warning" onClick={handleOpenCart}>
-          Open Cart
-        </button>
+        <div className="d-flex justify-content-end">
+          <button className="btn btn-outline-warning" onClick={handleOpenCart}>
+            Open Cart
+          </button>
+        </div>
       </div>
     </div>
   );
