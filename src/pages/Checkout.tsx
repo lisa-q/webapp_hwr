@@ -184,10 +184,11 @@ const Checkout = () => {
           </div>
         </form>
       </div>
-
-      <button className="btn btn-primary" onClick={handlePlaceOrder}>
-        Place Order
-      </button>
+      <div className="d-flex justify-content-end">
+        <button className="btn btn-primary" onClick={handlePlaceOrder}>
+          Place Order
+        </button>
+      </div>
     </div>
   );
 };
