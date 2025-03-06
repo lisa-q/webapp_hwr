@@ -1,7 +1,7 @@
 import "./CartOverlay.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CartItem } from "../types/cartItem";
+import { CartItem } from "../models/types";
 import CartItemComponent from "./CartItemComponent";
 import CartFirebaseService from "../services/CartFirebaseService";
 

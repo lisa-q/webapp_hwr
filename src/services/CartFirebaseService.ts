@@ -1,4 +1,4 @@
-import { CartItem } from "../types/cartItem";
+import { CartItem } from "../models/types";
 import { db } from "../../firebaseConfig";
 import { ref, set, get, remove } from "firebase/database";
 

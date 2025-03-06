@@ -1,5 +1,5 @@
 import React from "react";
-import { CartItem } from "../types/cartItem";
+import { CartItem } from "../models/types";
 import "./CartItemComponent.css";
 import CartFirebaseService from "../services/CartFirebaseService"; // Hier geändert
 

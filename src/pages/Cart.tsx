@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { CartItem } from "../types/cartItem";
+import { CartItem } from "../models/types";
 import CartItemComponent from "../components/CartItemComponent";
 import "./Cart.css";
 import CartFirebaseService from "../services/CartFirebaseService";
