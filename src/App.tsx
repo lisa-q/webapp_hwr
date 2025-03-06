@@ -3,18 +3,30 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Impressum from "./pages/Impressum";
 import Navbar from "./components/Navbar";
+import Cart from "./pages/Cart";
+import ProductOverview from "./pages/ProductOverview";
+import ProductDetail from "./pages/ProductDetail";
+import "./App.css";
+
+import Checkout from "./pages/Checkout";
 
 function App() {
-    return (
-        <Router>
-            <Navbar />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/impressum" element={<Impressum />} />
-            </Routes>
-        </Router>
-    );
+  return (
+    <Router>
+      <Navbar />
+      <div id="dynamic-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/impressum" element={<Impressum />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/shop" element={<ProductOverview />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
 export default App;

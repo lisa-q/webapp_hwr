@@ -1,0 +1,13 @@
+
+.about-card {
+    max-width: 800px;
+    background-color: #FFFAF0;
+    border-radius: 25px;
+    padding: 20px;
+}
+
+.about-title {
+    color: #D2691E;
+    font-weight: bold;
+}
+

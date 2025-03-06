@@ -1,0 +1,43 @@
+.product-overview-container {
+    padding: 50px;
+}
+
+.search-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap; /* Falls zu viele Produkte vorhanden sind, umbrechen */
+    justify-content: center;
+    gap: 20px;
+    max-height: 60vh; /* Höhe begrenzen, damit nicht die ganze Seite scrollt */
+    overflow-y: auto; /* Nur die Produktliste scrollen lassen */
+    padding: 10px;
+}
+
+.product-card {
+    width: 250px;
+    border-radius: 15px;
+    background-color: white;
+}
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.product-name {
+    font-weight: bold;
+    color: #D2691E;
+}
+.product-price {
+    color: #555;
+    font-size: 18px;
+}

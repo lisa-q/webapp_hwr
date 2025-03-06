@@ -1,8 +1,8 @@
-import { db } from "../../../firebaseConfig";
+import { db } from "../../firebaseConfig";
 import { ref, set, get, onValue, off, remove } from "firebase/database";
-import { Product } from "../models/Product";
+import { Product } from "../models/types";
 
-class ProductService {
+class ProductFirebaseService {
 
     static async getAllProducts(): Promise<Product[]> {
         const dataRef = ref(db, "products");
@@ -75,4 +75,4 @@ class ProductService {
     
 }
 
-export default ProductService;
+export default ProductFirebaseService;

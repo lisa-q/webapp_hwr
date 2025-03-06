@@ -1,0 +1,15 @@
+.cart-container {
+  width: 600px;
+  margin: auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cart-total {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}

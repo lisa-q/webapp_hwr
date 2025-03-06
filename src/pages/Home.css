@@ -1,0 +1,25 @@
+/* Hintergrund */
+  
+  /* Card Styling */
+  .home-card {
+    max-width: 900px;
+    background-color: #FFFAF0; /* Warmer Creme-Ton */
+    border-radius: 25px; /* Stärker abgerundete Ecken */
+  }
+  
+  /* Bild Styling */
+  .home-image {
+    object-fit: cover;
+    height: 100%;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+  
+  /* Überschrift */
+  .home-title {
+    color: #D2691E;
+    font-weight: bold;
+  }
+  
+
+  
