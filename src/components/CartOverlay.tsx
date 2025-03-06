@@ -10,11 +10,11 @@ const CartOverlay = ({ onClose }: { onClose: () => void }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   useEffect(() => {
-    const fetchCartItems = async () => {
-      const items = await CartFirebaseService.getCurrentCart();
-      setCartItems(items);
+    const unsubscribe = CartFirebaseService.listenToCart(setCartItems);
+
+    return () => {
+      unsubscribe();
     };
-    fetchCartItems();
   }, []);
 
   const handleOpenCart = () => {

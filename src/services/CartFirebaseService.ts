@@ -1,8 +1,9 @@
 import { CartItem } from "../models/types";
 import { db } from "../../firebaseConfig";
-import { ref, set, get, remove, push } from "firebase/database";
+import { ref, set, get, remove, push, onValue, off } from "firebase/database";
 
 class CartFirebaseService {
+   
     private static getDeviceId(): string {
         let deviceId = localStorage.getItem("device_id");
         if (!deviceId) {
@@ -30,6 +31,29 @@ class CartFirebaseService {
             return [];
         }
     }
+    
+    static listenToCart(callback: (cartItems: CartItem[]) => void): () => void {
+        const deviceId = this.getDeviceId();
+        const dataRef = ref(db, `carts/${deviceId}`);
+        const listener = onValue(dataRef, (snapshot) => {
+          if (snapshot.exists()) {
+              const cartObject = snapshot.val();
+              const cartItems = Object.entries(cartObject).map(([key, value]) => {
+                  const productData = value as Omit<CartItem, "id">;
+                  return {
+                      id: key,
+                      ...productData
+                  };
+              });
+  
+              callback(cartItems);
+          } else {
+              callback([]);
+          }
+      });
+      return () => off(dataRef, "value", listener);
+    }
+  
 
     static async addToCart(cartItem: CartItem): Promise<void> {
         const deviceId = this.getDeviceId();
