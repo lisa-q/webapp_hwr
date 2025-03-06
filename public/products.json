@@ -1,6 +1,24 @@
 {
   "products": [
     {
+      "name": "Papagei Piratenhut",
+      "price": 14.99,
+      "image": "/src/assets/productPictures/papagei_piratenHut.webp",
+      "description": "Der perfekte Hut für stilbewusste Vögel.\n\nMaterial:\nFilz, Federn, Polyester, Metall."
+    },
+    {
+      "name": "Katze Magiehalsband",
+      "price": 19.99,
+      "image": "/src/assets/productPictures/katze_magischesHalsband.webp",
+      "description": "Verleiht deiner Katze einen edlen Look.\n\nMaterial:\nEdelstahl, vergoldet. Zirkonia."
+    },
+    {
+      "name": "Hund Hoodie",
+      "price": 29.99,
+      "image": "/src/assets/productPictures/hund_hoodie.webp",
+      "description": "Ein gemütlicher Hoodie für kalte Tage.\n\nMaterial:\n95 % Baumwolle, 5 % Elasthan."
+    },
+    {
       "name": "Bär Hoodie",
       "price": 19.99,
       "image": "/src/assets/productPictures/baer_hoodie.png",
