@@ -1,0 +1,27 @@
+.product-detail-card {
+    max-width: 600px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 25px;
+    text-align: center;
+}
+.product-detail-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+.product-detail-title {
+    color: #D2691E;
+    font-weight: bold;
+}
+.product-detail-description {
+    color: #555;
+    font-size: 18px;
+    margin: 15px 0;
+}
+.product-detail-price {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+}
