@@ -43,30 +43,44 @@ class CartFirebaseService {
         await remove(dataRef);
     }
 
-    static async placeOrder(): Promise<void> {
+    static async placeOrder(orderDetails: {
+        address: {
+          name: string;
+          address: string;
+          city: string;
+          postalCode: string;
+          country: string;
+        };
+        shippingMethod: string;
+        paymentMethod: string;
+      }): Promise<void> {
         const deviceId = this.getDeviceId();
         const cartItems = await this.getCurrentCart();
-    
+      
         if (cartItems.length === 0) {
-            throw new Error("Cart is empty, cannot place order.");
+          throw new Error("Cart is empty, cannot place order.");
         }
-    
+      
         const totalPrice = cartItems.reduce((sum, item) => {
-            return sum + (item.price * (item.quantity ?? 1));
+          return sum + (item.price * (item.quantity ?? 1));
         }, 0);
-    
+      
         const ordersListRef = ref(db, `orders/${deviceId}`);
         const newOrderRef = push(ordersListRef);
-    
+      
         await set(newOrderRef, {
-            createdAt: new Date().toISOString(),
-            items: cartItems,
-            totalPrice: parseFloat(totalPrice.toFixed(2))
+          createdAt: new Date().toISOString(),
+          address: orderDetails.address,
+          shippingMethod: orderDetails.shippingMethod,
+          paymentMethod: orderDetails.paymentMethod,
+          items: cartItems,
+          totalPrice: parseFloat(totalPrice.toFixed(2))
         });
-    
+      
         const cartRef = ref(db, `carts/${deviceId}`);
         await remove(cartRef);
-    }
+      }
+      
     
     
 }
