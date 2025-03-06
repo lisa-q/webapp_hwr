@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { CartItem } from "../models/types";
+import { useNavigate } from "react-router-dom";
+
 import CartItemComponent from "../components/CartItemComponent";
 import "./Cart.css";
 import CartFirebaseService from "../services/CartFirebaseService";
 
 const Cart: React.FC = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCartItems = async () => {
@@ -19,10 +22,13 @@ const Cart: React.FC = () => {
     try {
       await CartFirebaseService.removeFromCart(id);
       setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
-      console.log("Item gelöscht:", id);
     } catch (error) {
-      console.error("Fehler beim Löschen des Items:", error);
+      console.error(error);
     }
+  };
+
+  const handleOpenCheckout = () => {
+    navigate("/checkout", { state: { cartItems } });
   };
 
   return (
@@ -51,6 +57,14 @@ const Cart: React.FC = () => {
                 .toFixed(2)}{" "}
               €
             </h2>
+          </div>
+          <div className="d-flex justify-content-end">
+            <button
+              className="btn btn-outline-warning"
+              onClick={handleOpenCheckout}
+            >
+              Checkout
+            </button>
           </div>
         </>
       )}
