@@ -7,14 +7,12 @@
     },
     {
         "name": "Kuscheliger Katzenpullover",
-        "description": "Weicher Pullover für Katzen, perfekt für kalte Tage.",
         "price": 24.99,
         "image": "/src/assets/hamster.avif"
 
     },
     {
         "name": "Hundeschal mit Muster",
-        "description": "Trendiger Schal für modebewusste Hunde.",
         "price": 14.99,
         "image": "/src/assets/fox.avif"
 
