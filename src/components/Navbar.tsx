@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import CartOverlay from "./CartOverlay";
+import CartBadge from "./CartBatch";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -49,10 +50,11 @@ const Navbar = () => {
               </li>
               <li className="nav-item position-relative">
                 <button
-                  className="nav-link d-flex align-items-center justify-content-center border rounded p-2 bg-transparent"
+                  className="nav-link d-flex align-items-center justify-content-center border rounded p-2 bg-transparent position-relative"
                   onClick={() => setIsCartOpen(!isCartOpen)}
                 >
                   <i className="bi bi-basket2-fill"></i>
+                  <CartBadge />{" "}
                 </button>
                 {isCartOpen && (
                   <CartOverlay onClose={() => setIsCartOpen(false)} />
