@@ -129,6 +129,11 @@
         "name": "Zebra Abendkleid",
         "price": 24.99,
         "image": "/src/assets/productPictures/zebra_abendkleid.png"
+      },
+      {
+        "name": "Krokodil Partyhut",
+        "price": 2.99,
+        "image": "/src/assets/productPictures/krokodil_partyhut.png"
       }
     ]
   }
