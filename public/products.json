@@ -1,51 +1,135 @@
-{ "products":
-    [
-    {
-        "name": "Stylisches Hunde-T-Shirt",
+{
+    "products": [
+      {
+        "name": "Bär Hoodie",
         "price": 19.99,
-        "image": "/src/assets/dog.avif"
-    },
-    {
-        "name": "Kuscheliger Katzenpullover",
+        "image": "/src/assets/productPictures/baer_hoodie.png"
+      },
+      {
+        "name": "Dackel Warnweste",
         "price": 24.99,
-        "image": "/src/assets/hamster.avif"
-
-    },
-    {
-        "name": "Hundeschal mit Muster",
+        "image": "/src/assets/productPictures/dackel_warnweste.png"
+      },
+      {
+        "name": "Elefant Zylinder",
         "price": 14.99,
-        "image": "/src/assets/fox.avif"
-
-    },
-    {
-        "name": "Regenjacke für kleine Hunde",
+        "image": "/src/assets/productPictures/elefant_zylinder.png"
+      },
+      {
+        "name": "Eule Weste",
         "price": 34.99,
-        "image": "/src/assets/dog.avif"
-
-    },
-    {
-        "name": "Lederhalsband mit Gravur",
+        "image": "/src/assets/productPictures/eule_weste.png"
+      },
+      {
+        "name": "Fisch Schal",
         "price": 29.99,
-        "image": "/src/assets/hamster.avif"
-
-    },
-    {
-        "name": "Katzenschal aus Wolle",
+        "image": "/src/assets/productPictures/fisch_schal.png"
+      },
+      {
+        "name": "Frosch Krawatte",
         "price": 17.99,
-        "image": "/src/assets/fox.avif"
-
-    },
-    {
-        "name": "Weihnachtspullover für Hunde",
+        "image": "/src/assets/productPictures/frosch_kravatte.png"
+      },
+      {
+        "name": "Hamster Kleid",
         "price": 22.99,
-        "image": "/src/assets/hamster.avif"
-
-    },
-    {
-        "name": "Sonnenbrille für Hunde",
+        "image": "/src/assets/productPictures/hamster_kleid.png"
+      },
+      {
+        "name": "Hase Gummistiefel",
         "price": 12.99,
-        "image": "/src/assets/fox.avif"
-
-    }
-]
-}
+        "image": "/src/assets/productPictures/hase_gummistiefel.png"
+      },
+      {
+        "name": "Huhn Krone",
+        "price": 19.99,
+        "image": "/src/assets/productPictures/huhn_krone.png"
+      },
+      {
+        "name": "Igel Pullover",
+        "price": 24.99,
+        "image": "/src/assets/productPictures/igel_pullover.png"
+      },
+      {
+        "name": "Känguru Umhängetasche",
+        "price": 14.99,
+        "image": "/src/assets/productPictures/kaenguru_umhaengetasche.png"
+      },
+      {
+        "name": "Katze Mütze",
+        "price": 34.99,
+        "image": "/src/assets/productPictures/katze_muetze.png"
+      },
+      {
+        "name": "Koala Pyjama",
+        "price": 29.99,
+        "image": "/src/assets/productPictures/koala_pyjama.png"
+      },
+      {
+        "name": "Krabbe Schmuck",
+        "price": 17.99,
+        "image": "/src/assets/productPictures/krabbe_schmuck.png"
+      },
+      {
+        "name": "Löwe Morgenmantel",
+        "price": 22.99,
+        "image": "/src/assets/productPictures/loewe_morgenmantel.png"
+      },
+      {
+        "name": "Maulwurf Sonnenbrille",
+        "price": 12.99,
+        "image": "/src/assets/productPictures/maulwurf_sonnenbrille.png"
+      },
+      {
+        "name": "Maus Handschuhe",
+        "price": 19.99,
+        "image": "/src/assets/productPictures/maus_handschuhe.png"
+      },
+      {
+        "name": "Panda Rucksack",
+        "price": 24.99,
+        "image": "/src/assets/productPictures/panda_rucksack.png"
+      },
+      {
+        "name": "Pinguin Anzug",
+        "price": 14.99,
+        "image": "/src/assets/productPictures/pinguin_anzug.png"
+      },
+      {
+        "name": "Ratte Kochmütze",
+        "price": 34.99,
+        "image": "/src/assets/productPictures/ratte_kochmuetze.png"
+      },
+      {
+        "name": "Schaf Lederjacke",
+        "price": 29.99,
+        "image": "/src/assets/productPictures/schaf_lederjacke.png"
+      },
+      {
+        "name": "Schildkröte T-Shirt",
+        "price": 17.99,
+        "image": "/src/assets/productPictures/schildkroete_tshirt.png"
+      },
+      {
+        "name": "Schlange Mütze",
+        "price": 22.99,
+        "image": "/src/assets/productPictures/schlange_mütze.png"
+      },
+      {
+        "name": "Tiger Sportcap",
+        "price": 12.99,
+        "image": "/src/assets/productPictures/tiger_sportcap.png"
+      },
+      {
+        "name": "Wal Kilt",
+        "price": 19.99,
+        "image": "/src/assets/productPictures/wal_kilt.png"
+      },
+      {
+        "name": "Zebra Abendkleid",
+        "price": 24.99,
+        "image": "/src/assets/productPictures/zebra_abendkleid.png"
+      }
+    ]
+  }
+  
