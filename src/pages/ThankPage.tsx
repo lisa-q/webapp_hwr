@@ -4,10 +4,10 @@ import "./ThankPage.css";
 const ThankPage = () => {
     return (
         <div className="container thank-container">
-            <h2>Vielen Dank für Ihre Bestellung! 🎉</h2>
+            <h2>Vielen Dank für deine Bestellung! 🎉</h2>
             <p>
-                Ihre Bestellung wurde erfolgreich aufgegeben.
-                Falls Sie Fragen haben, stehen wir Ihnen gerne zur Verfügung.
+                Deine Bestellung wurde erfolgreich aufgegeben.
+                Falls du Fragen hast, stehen wir dir gerne über unser Kontaktformular zur Verfügung.
             </p>
 
             <div className="thank-buttons">

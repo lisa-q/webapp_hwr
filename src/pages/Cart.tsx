@@ -43,7 +43,7 @@ const Cart: React.FC = () => {
               className="btn btn-outline-warning"
               onClick={handleOpenCheckout}
             >
-              Checkout
+              Bestellung abschließen
             </button>
           </div>
         </>
