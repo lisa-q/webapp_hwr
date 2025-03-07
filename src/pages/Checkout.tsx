@@ -58,7 +58,7 @@ const Checkout = () => {
       });
 
       console.log("Order placed successfully.");
-      navigate("/");
+      navigate("/thank-you");
     } catch (error) {
       console.error("Failed to place order:", error);
     }

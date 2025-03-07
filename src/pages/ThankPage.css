@@ -1,0 +1,31 @@
+.thank-container {
+    width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.thank-container h2 {
+    margin-bottom: 20px;
+}
+
+.thank-container p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.thank-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.thank-buttons .btn {
+    padding: 12px 20px;
+    font-size: 18px;
+}
