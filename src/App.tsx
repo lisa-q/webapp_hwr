@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Cart from "./pages/Cart";
 import ProductOverview from "./pages/ProductOverview";
 import ProductDetail from "./pages/ProductDetail";
+import ThankPage from "./pages/ThankPage";
 import "./App.css";
 
 import Checkout from "./pages/Checkout";
@@ -23,6 +24,7 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/shop" element={<ProductOverview />} />
           <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/thank-you" element={<ThankPage />} />
         </Routes>
       </div>
     </Router>

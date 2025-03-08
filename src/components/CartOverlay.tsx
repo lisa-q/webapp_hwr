@@ -20,7 +20,7 @@ const CartOverlay = ({ onClose }: { onClose: () => void }) => {
         <CartItemList />
         <div className="d-flex justify-content-end">
           <button className="btn btn-outline-warning" onClick={handleOpenCart}>
-            Open Cart
+            Zum Warenkorb
           </button>
         </div>
       </div>
