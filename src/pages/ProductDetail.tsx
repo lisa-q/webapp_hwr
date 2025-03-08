@@ -56,7 +56,7 @@ const ProductDetail = () => {
           </p>
           <p className="product-detail-price">{product.price} €</p>
           <button
-            className="btn btn-outline-warning btn-lg me-2"
+            className="btn btn-orange btn-lg me-2"
             onClick={handleBackToShop}
           >
             Zurück zum Shop

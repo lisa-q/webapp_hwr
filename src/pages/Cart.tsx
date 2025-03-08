@@ -44,13 +44,13 @@ const Cart: React.FC = () => {
           </div>
           <div className="d-flex justify-content-end">
             <button
-              className="btn btn-outline-warning mx-2"
+              className="btn btn-orange mx-2"
               onClick={handleContinueShopping}
             >
               Weiter einkaufen
             </button>
             <button
-              className="btn btn-outline-warning mx-2"
+              className="btn btn-warning mx-2"
               onClick={handleOpenCheckout}
             >
               Checkout
