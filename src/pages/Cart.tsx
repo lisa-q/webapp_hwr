@@ -29,7 +29,10 @@ const Cart: React.FC = () => {
     <div className="cart-container">
       <h1>Warenkorb</h1>
       {cartItems.length === 0 ? (
-        <p>Dein Warenkorb ist leer.</p>
+        <div className="text-center">
+          <i className="bi bi-cart-x bi-4x"></i>
+          <p>Dein Warenkorb ist leer.</p>
+        </div>
       ) : (
         <>
           <CartItemList />
@@ -53,7 +56,7 @@ const Cart: React.FC = () => {
               className="btn btn-warning mx-2"
               onClick={handleOpenCheckout}
             >
-              Checkout
+              Kaufen
             </button>
           </div>
         </>

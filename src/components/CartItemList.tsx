@@ -32,7 +32,10 @@ const CartItemList = () => {
           ))}
         </ul>
       ) : (
-        <p>Dein Warenkorb ist leer.</p>
+        <div className="text-center">
+          <i className="bi bi-cart-x bi-4x"></i>
+          <p>Dein Warenkorb ist leer.</p>
+        </div>
       )}
     </div>
   );
