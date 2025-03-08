@@ -1,0 +1,28 @@
+.order-card {
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .order-card .card-body {
+    padding: 1.5rem;
+  }
+  
+  .order-card .list-group-item {
+    font-size: 0.9rem;
+    border: none;
+  }
+  
+  .order-card .card-title {
+    font-weight: bold;
+  }
+  
+
+  .order-items-container {
+    max-height: 150px; /* Maximale Höhe für die Liste */
+    overflow-y: auto;   /* Scrollen aktivieren, falls nötig */
+    border-radius: 5px; /* Abgerundete Ecken */
+    border: 1px solid #ddd;
+    padding: 5px;
+  }
+  
+  
