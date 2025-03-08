@@ -21,6 +21,10 @@ const Cart: React.FC = () => {
     navigate("/checkout");
   };
 
+  const handleContinueShopping = () => {
+    navigate("/shop");
+  };
+
   return (
     <div className="cart-container">
       <h1>Warenkorb</h1>
@@ -40,7 +44,13 @@ const Cart: React.FC = () => {
           </div>
           <div className="d-flex justify-content-end">
             <button
-              className="btn btn-outline-warning"
+              className="btn btn-outline-warning mx-2"
+              onClick={handleContinueShopping}
+            >
+              Weiter einkaufen
+            </button>
+            <button
+              className="btn btn-outline-warning mx-2"
               onClick={handleOpenCheckout}
             >
               Checkout
