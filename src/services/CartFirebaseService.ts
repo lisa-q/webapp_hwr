@@ -2,6 +2,7 @@ import { CartItem } from "../models/types";
 import { Order } from "../models/types";
 import { db } from "../../firebaseConfig";
 import { ref, set, get, remove, push, onValue, off } from "firebase/database";
+import ProductFirebaseService from "./ProductFirebaseService";
 
 class CartFirebaseService {
    
@@ -100,41 +101,45 @@ class CartFirebaseService {
     
     static async placeOrder(orderDetails: {
         address: {
-          name: string;
-          address: string;
-          city: string;
-          postalCode: string;
-          country: string;
+            name: string;
+            address: string;
+            city: string;
+            postalCode: string;
+            country: string;
         };
         shippingMethod: string;
         paymentMethod: string;
-      }): Promise<void> {
+    }): Promise<void> {
         const deviceId = this.getDeviceId();
         const cartItems = await this.getCurrentCart();
-      
+
         if (cartItems.length === 0) {
-          throw new Error("Cart is empty, cannot place order.");
+            throw new Error("Cart is empty, cannot place order.");
         }
-      
+
         const totalPrice = cartItems.reduce((sum, item) => {
-          return sum + (item.price * (item.quantity ?? 1));
+            return sum + (item.price * (item.quantity ?? 1));
         }, 0);
-      
+
         const ordersListRef = ref(db, `orders/${deviceId}`);
         const newOrderRef = push(ordersListRef);
-      
+
         await set(newOrderRef, {
-          createdAt: new Date().toISOString(),
-          address: orderDetails.address,
-          shippingMethod: orderDetails.shippingMethod,
-          paymentMethod: orderDetails.paymentMethod,
-          items: cartItems,
-          totalPrice: parseFloat(totalPrice.toFixed(2))
+            createdAt: new Date().toISOString(),
+            address: orderDetails.address,
+            shippingMethod: orderDetails.shippingMethod,
+            paymentMethod: orderDetails.paymentMethod,
+            items: cartItems,
+            totalPrice: parseFloat(totalPrice.toFixed(2))
         });
-      
+
+        for (const item of cartItems) {
+            await ProductFirebaseService.incrementNumberOfBuys(item.id, item.quantity ?? 1);
+        }
+
         const cartRef = ref(db, `carts/${deviceId}`);
         await remove(cartRef);
-      }
+    }
 
       static async getOrderHistory(): Promise<Order[]> {
         const deviceId = this.getDeviceId();
@@ -154,12 +159,6 @@ class CartFirebaseService {
             return [];
         }
     }
-    
-    
-    
-      
-    
-    
 }
 
 export default CartFirebaseService;
