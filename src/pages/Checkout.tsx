@@ -83,7 +83,7 @@ const Checkout = () => {
                 className="list-group-item d-flex justify-content-between"
               >
                 <span>
-                  {item.name} - {item.quantity}x
+                  {item.quantity}x {item.name}
                 </span>
                 <strong>{item.price} €</strong>
               </li>
