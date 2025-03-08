@@ -86,7 +86,6 @@ class CartFirebaseService {
             if (snapshot.exists()) {
                 const existingData = snapshot.val();
     
-                // Bestehende Daten mit neuer Menge speichern
                 await set(itemRef, {
                     ...existingData,
                     quantity: newQuantity,
@@ -98,7 +97,6 @@ class CartFirebaseService {
     }
     
     
-
     static async placeOrder(orderDetails: {
         address: {
           name: string;
