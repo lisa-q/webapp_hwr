@@ -48,6 +48,11 @@ const Navbar = () => {
                   Impressum
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link to="/orderHistory" className="nav-link">
+                  Orders
+                </Link>
+              </li>
               <li className="nav-item position-relative">
                 <button
                   className="nav-link d-flex align-items-center justify-content-center border rounded p-2 bg-transparent position-relative"
