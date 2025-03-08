@@ -1,7 +1,7 @@
 import React from "react";
 import { CartItem } from "../models/types";
 import "./CartItemComponent.css";
-import CartFirebaseService from "../services/CartFirebaseService"; // Hier geändert
+import CartFirebaseService from "../services/CartFirebaseService";
 
 interface CartItemComponentProps {
   cartItem: CartItem;
@@ -15,7 +15,7 @@ const CartItemComponent: React.FC<CartItemComponentProps> = ({
   const { id, name, price, quantity, image } = cartItem;
 
   const handleDelete = async () => {
-    await CartFirebaseService.removeFromCart(id); // Hier geändert
+    await CartFirebaseService.removeFromCart(id);
     onDelete(id);
   };
 
