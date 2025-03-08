@@ -1,9 +1,10 @@
 #dynamic-content {
     padding-top: 90px;
     height: 100vh;
-    background-color: #fae5b7;
+    background: linear-gradient(135deg, #fbd786, #edc990, #ec955f);
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: auto; /* Ermöglicht Scrollen, wenn der Inhalt zu groß ist */
 }
+
