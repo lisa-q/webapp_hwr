@@ -13,45 +13,14 @@ const Impressum = () => {
 
           <h3 className="mb-3">Anschrift & Kontakt</h3>
           <p>Furtastic Fashion GmbH</p>
-          <p>123 Pet Street, 56789 Animal Town</p>
-          <p>E-Mail: contact@furtasticfashion.com</p>
+          <p>Haustierstraße 7, 12635 Karottingen</p>
+          <p>E-Mail: contact@furtasticfashion.de</p>
           <p>Telefon: +49 123 456789</p>
 
           <h3 className="mt-4">Öffnungszeiten</h3>
-          <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
-          <p>Saturday: 10:00 AM - 4:00 PM</p>
-          <p>Sunday: Closed</p>
-
-          <h3 className="mt-4">Kontaktiere uns!</h3>
-          <form className="contact-form">
-            <div className="mb-3">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Dein Name"
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <input
-                type="email"
-                className="form-control"
-                placeholder="Deine E-Mail"
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <textarea
-                className="form-control"
-                rows={4}
-                placeholder="Deine Nachricht"
-                required
-              ></textarea>
-            </div>
-            <button type="submit" className="btn btn-success">
-              Abschicken
-            </button>
-          </form>
+          <p>Montag - Freitag: 9:00 - 18:00 Uhr</p>
+          <p>Samstag: 10:00 - 16:00 Uhr</p>
+          <p>Sonntag: Geschlossen</p>
         </div>
       </div>
     </div>
