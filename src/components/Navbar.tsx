@@ -17,8 +17,13 @@ const Navbar = () => {
     <>
       <nav className="navbar navbar-expand-lg navbar-custom fixed-top p-3">
         <div className="container-fluid">
-          <Link to="/" className="navbar-brand">
-            Furtastic Fashion
+          <Link to="/" className="navbar-brand d-flex align-items-center">
+            <img
+              src={"/src/assets/logo.png"}
+              alt="Logo"
+              className="navbar-logo"
+            />
+            <span>Furtastic Fashion</span>
           </Link>
           <button
             className="navbar-toggler"
@@ -45,7 +50,7 @@ const Navbar = () => {
               </li>
               <li className="nav-item">
                 <Link to="/about" className="nav-link">
-                  About
+                  Über Uns
                 </Link>
               </li>
               <li className="nav-item">
@@ -55,12 +60,12 @@ const Navbar = () => {
               </li>
               <li className="nav-item">
                 <Link to="/orderHistory" className="nav-link">
-                  Orders
+                  Bestellungen
                 </Link>
               </li>
               <li className="nav-item position-relative">
                 <button
-                  className="nav-link d-flex align-items-center justify-content-center border rounded p-2 bg-transparent position-relative"
+                  className="nav-link d-flex align-items-center justify-content-center border border-dark rounded p-2 bg-transparent position-relative"
                   onClick={() => setIsCartOpen(!isCartOpen)}
                 >
                   <i className="bi bi-basket2-fill"></i>

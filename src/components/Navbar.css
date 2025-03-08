@@ -1,24 +1,28 @@
 .navbar-custom {
-    background-color: #bc8738; /* Deine Wunschfarbe - hier ein Beispiel (pink) */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .navbar-custom .navbar-brand {
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: white; /* Farbe der Schrift */
-  }
-  
-  .navbar-custom .nav-link {
-    color: white; /* Links-Farbe */
-    transition: color 0.3s ease;
-  }
-  
-  .navbar-custom .nav-link:hover {
-    color: #ffd700; /* Gold beim Hover */
-  }
-  
-  .navbar-toggler {
-    border-color: white;
-  }
-  
+  background: linear-gradient(90deg, #d59f4d, #e2a351); /* Gold-Braun Verlauf */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-custom .navbar-brand {
+  font-weight: bold;
+  font-size: 1.7rem;
+  color: rgb(80, 59, 31);
+}
+
+.navbar-custom .nav-link {
+  color: rgb(80, 59, 31);
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-custom .nav-link:hover .border-dark {
+  color: #5b5b10; /* Gold beim Hover */
+}
+
+
+.navbar-logo {
+  height: 40px;
+  width: auto;
+  margin-right: 10px;
+  border-radius: 8px;
+}
