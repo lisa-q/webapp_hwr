@@ -16,7 +16,6 @@ const Impressum = () => {
           <p>Haustierstraße 7, 12635 Karottingen</p>
           <p>E-Mail: contact@furtasticfashion.de</p>
           <p>Telefon: +49 123 456789</p>
-
           <h3 className="mt-4">Öffnungszeiten</h3>
           <p>Montag - Freitag: 9:00 - 18:00 Uhr</p>
           <p>Samstag: 10:00 - 16:00 Uhr</p>

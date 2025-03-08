@@ -40,7 +40,7 @@ const Checkout = () => {
       !formData.postalCode ||
       !formData.country
     ) {
-      alert("Bitte fülle alle Felder aus.");
+      alert("Bitte fülle alle Adressfelder aus.");
       return;
     }
 
@@ -58,7 +58,7 @@ const Checkout = () => {
       });
 
       console.log("Order placed successfully.");
-      navigate("/");
+      navigate("/thank-you");
     } catch (error) {
       console.error("Failed to place order:", error);
     }
@@ -70,7 +70,7 @@ const Checkout = () => {
 
   return (
     <div className="container checkout-container">
-      <h2>Checkout</h2>
+      <h2>Bestellabschluss</h2>
 
       <div className="checkout-layout">
         {/* Order Summary */}
@@ -108,7 +108,7 @@ const Checkout = () => {
         <div className="checkout-left">
           {/* Address Form */}
           <div className="address-form mt-4">
-            <h4>Adresse</h4>
+            <h4>Anschrift</h4>
             <form className="row ">
               <div className="col-md-6">
                 <label htmlFor="name" className="form-label">
@@ -126,7 +126,8 @@ const Checkout = () => {
               </div>
               <div className="col-md-6">
                 <label htmlFor="address" className="form-label">
-                  Straße::
+
+                  Straße:
                 </label>
                 <input
                   type="text"
@@ -189,7 +190,7 @@ const Checkout = () => {
             <form>
               <div>
                 <label htmlFor="shipping" className="form-label">
-                  Versand-Art:
+                  Versandmethode:
                 </label>
                 <select
                   id="shipping"
@@ -201,9 +202,9 @@ const Checkout = () => {
                   <option value="Papageien-Lieferung">
                     🦜 Papageien-Lieferung
                   </option>
-                  <option value="Schneckenpost">🐌 Schneckenpost</option>
-                  <option value="Tanzende Pinguin-Zustellung">
-                    🐧 Tanzende Pinguin-Zustellung
+                  <option value="Schnecken-Post">🐌 Schnecken-Post</option>
+                  <option value="Tanzende-Pinguin-Zustellung">
+                    🐧 Tanzende-Pinguin-Zustellung
                   </option>
                   <option value="Eulen-Nachtlieferung">
                     🦉 Eulen-Nachtlieferung
@@ -222,7 +223,7 @@ const Checkout = () => {
             <form>
               <div>
                 <label htmlFor="payment" className="form-label">
-                  Bezahlungsart:
+                  Zahlungsmethode:
                 </label>
                 <select
                   id="payment"
@@ -243,7 +244,7 @@ const Checkout = () => {
 
           {/* Place Order Button */}
           <button className="btn btn-warning mt-4" onClick={handlePlaceOrder}>
-            Bestellung abschicken
+            Bestellung aufgeben
           </button>
         </div>
       </div>

@@ -56,7 +56,7 @@ const Cart: React.FC = () => {
               className="btn btn-warning mx-2"
               onClick={handleOpenCheckout}
             >
-              Kaufen
+              Bestellung abschließen
             </button>
           </div>
         </>

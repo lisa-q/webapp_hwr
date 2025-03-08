@@ -50,7 +50,7 @@ const Navbar = () => {
               </li>
               <li className="nav-item">
                 <Link to="/about" className="nav-link">
-                  Über Uns
+                  Über uns
                 </Link>
               </li>
               <li className="nav-item">
