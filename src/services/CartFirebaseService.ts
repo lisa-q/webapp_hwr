@@ -1,4 +1,5 @@
 import { CartItem } from "../models/types";
+import { Order } from "../models/types";
 import { db } from "../../firebaseConfig";
 import { ref, set, get, remove, push, onValue, off } from "firebase/database";
 
@@ -134,6 +135,28 @@ class CartFirebaseService {
         const cartRef = ref(db, `carts/${deviceId}`);
         await remove(cartRef);
       }
+
+      static async getOrderHistory(): Promise<Order[]> {
+        const deviceId = this.getDeviceId();
+        const ordersRef = ref(db, `orders/${deviceId}`);
+        const snapshot = await get(ordersRef);
+    
+        if (snapshot.exists()) {
+            const ordersObject = snapshot.val();
+            return Object.entries(ordersObject).map(([key, value]) => {
+                const orderData = value as Omit<Order, "id">; 
+                return {
+                    id: key, 
+                    ...orderData 
+                };
+            });
+        } else {
+            return [];
+        }
+    }
+    
+    
+    
       
     
     
