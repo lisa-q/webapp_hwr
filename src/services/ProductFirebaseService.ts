@@ -72,6 +72,13 @@ class ProductFirebaseService {
     
         return () => off(dataRef, "value", listener);
     }
+
+    static async incrementNumberOfBuys(productId: string, amount: number): Promise<void> {
+        const productRef = ref(db, `products/${productId}/numberOfBuys`);
+        const snapshot = await get(productRef);
+        const currentBuys = snapshot.exists() ? snapshot.val() : 0;
+        await set(productRef, currentBuys + amount);
+    }
     
 }
 
