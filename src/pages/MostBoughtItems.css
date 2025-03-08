@@ -1,0 +1,18 @@
+img {
+    border-radius: 10px;
+}
+
+.first-place{
+    background-color: #e3b13c;
+    border-radius: 10px;
+}
+
+.second-place{
+    background-color: #c0c0c0;
+    border-radius: 10px;
+}
+
+.third-place{
+    background-color: #cd7f32;
+    border-radius: 10px;
+}

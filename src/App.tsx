@@ -10,6 +10,7 @@ import OrderHistory from "./pages/OrderHistory";
 import "./App.css";
 
 import Checkout from "./pages/Checkout";
+import MostBoughtItems from "./pages/MostBoughtItems";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/shop" element={<ProductOverview />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/orderHistory" element={<OrderHistory />} />
+          <Route path="/mostBoughtItems" element={<MostBoughtItems />} />
         </Routes>
       </div>
     </Router>
