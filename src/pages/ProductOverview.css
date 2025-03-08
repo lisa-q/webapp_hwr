@@ -41,3 +41,11 @@
     color: #555;
     font-size: 18px;
 }
+
+.btn-orange{
+    background-color: #eba370;
+}
+
+.btn-orange:hover{
+    background-color: #d98c5b;
+}

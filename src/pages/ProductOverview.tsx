@@ -52,11 +52,11 @@ const ProductOverview = () => {
               <div className="card-body text-center">
                 <h5 className="product-name">{product.name}</h5>
                 <p className="product-price">{product.price} €</p>
-                <Link to={`/product/${product.id}`} className="btn btn-success">
+                <Link to={`/product/${product.id}`} className="btn btn-orange">
                   Details ansehen
                 </Link>
                 <button
-                  className="btn btn-primary mt-2"
+                  className="btn btn-warning mt-2"
                   onClick={() => handleAddToCart(product)}
                 >
                   In den Warenkorb
