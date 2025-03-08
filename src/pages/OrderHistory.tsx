@@ -25,7 +25,7 @@ const OrderHistory: React.FC = () => {
   return (
     <div className="container mt-4">
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h1>📦 Meine Bestellungen</h1>
+        <h1>Meine Bestellungen</h1>
         <span className="badge bg-success fs-5">
           💰 {totalSpent.toFixed(2)} €
         </span>

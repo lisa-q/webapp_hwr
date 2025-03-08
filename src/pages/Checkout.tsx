@@ -40,7 +40,7 @@ const Checkout = () => {
       !formData.postalCode ||
       !formData.country
     ) {
-      alert("Please fill in all address fields.");
+      alert("Bitte fülle alle Felder aus.");
       return;
     }
 
@@ -75,7 +75,7 @@ const Checkout = () => {
       <div className="checkout-layout">
         {/* Order Summary */}
         <div className="checkout-right">
-          <h4>Order Summary</h4>
+          <h4>Bestellübersicht</h4>
           <ul className="list-group">
             {cartItems.map((item) => (
               <li
@@ -100,7 +100,7 @@ const Checkout = () => {
             className="btn btn-warning mt-4"
             onClick={handleContinueShopping}
           >
-            Continue Shopping
+            Weiter einkaufen
           </button>
         </div>
 
@@ -108,7 +108,7 @@ const Checkout = () => {
         <div className="checkout-left">
           {/* Address Form */}
           <div className="address-form mt-4">
-            <h4>Address</h4>
+            <h4>Adresse</h4>
             <form className="row ">
               <div className="col-md-6">
                 <label htmlFor="name" className="form-label">
@@ -126,7 +126,7 @@ const Checkout = () => {
               </div>
               <div className="col-md-6">
                 <label htmlFor="address" className="form-label">
-                  Address:
+                  Straße::
                 </label>
                 <input
                   type="text"
@@ -140,7 +140,7 @@ const Checkout = () => {
               </div>
               <div className="col-md-4">
                 <label htmlFor="city" className="form-label">
-                  City:
+                  Stadt:
                 </label>
                 <input
                   type="text"
@@ -154,7 +154,7 @@ const Checkout = () => {
               </div>
               <div className="col-md-4">
                 <label htmlFor="postalCode" className="form-label">
-                  Postal Code:
+                  PLZ:
                 </label>
                 <input
                   type="text"
@@ -168,7 +168,7 @@ const Checkout = () => {
               </div>
               <div className="col-md-4">
                 <label htmlFor="country" className="form-label">
-                  Country:
+                  Land:
                 </label>
                 <input
                   type="text"
@@ -185,11 +185,11 @@ const Checkout = () => {
 
           {/* Shipping */}
           <div className="shipping-form mt-4">
-            <h4>Shipping</h4>
+            <h4>Versand</h4>
             <form>
               <div>
                 <label htmlFor="shipping" className="form-label">
-                  Shipping Method:
+                  Versand-Art:
                 </label>
                 <select
                   id="shipping"
@@ -218,11 +218,11 @@ const Checkout = () => {
 
           {/* Payment */}
           <div className="payment-form mt-4">
-            <h4>Payment</h4>
+            <h4>Bezahlung</h4>
             <form>
               <div>
                 <label htmlFor="payment" className="form-label">
-                  Payment Method:
+                  Bezahlungsart:
                 </label>
                 <select
                   id="payment"
@@ -243,7 +243,7 @@ const Checkout = () => {
 
           {/* Place Order Button */}
           <button className="btn btn-warning mt-4" onClick={handlePlaceOrder}>
-            Place Order
+            Bestellung abschicken
           </button>
         </div>
       </div>
