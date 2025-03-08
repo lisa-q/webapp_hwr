@@ -13,3 +13,12 @@ export interface CartItem {
     quantity: number;
     price: number;
   }
+
+export interface Order {
+    id: string;
+    createdAt: number;
+    totalPrice: number;
+    paymentMethod: string;
+    shippingMethod: string;
+    items: CartItem[];
+  }
