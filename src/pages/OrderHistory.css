@@ -1,0 +1,9 @@
+.scrollable-orders-container {
+    max-height: 40em; /* Dynamische maximale Höhe */
+    overflow-y: auto; /* Nur vertikal scrollen */
+    overflow-x: hidden; /* Horizontales Scrollen verhindern */
+    border: 1px solid #ddd; /* Optional: Rand für bessere Sichtbarkeit */
+    padding: 2em; /* Abstand innen */
+    border-radius: 0.5em; /* Abgerundete Ecken */
+    background-color: #f8f9fa; /* Heller Hintergrund */
+}
