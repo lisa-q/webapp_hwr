@@ -11,7 +11,7 @@ const Home = () => {
           {/* Bild links */}
           <div className="col-md-6">
             <img
-              src="/src/assets/shop-from-outside.webp"
+              src="/src/assets/shop_from_outside.png"
               className="img-fluid home-image"
               alt="Furtastic Fashion Shop"
             />
