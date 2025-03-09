@@ -1,4 +1,3 @@
-/* Checkout Container */
 .checkout-container {
     width: 1000px;
     margin: auto;
@@ -8,14 +7,12 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
-  /* Section Headers */
   .checkout-container h2,
   .checkout-container h4 {
     text-align: center;
     margin-bottom: 10px;
   }
   
-  /* Order Summary */
   .cart-items ul {
     list-style-type: none;
     padding: 0;
@@ -28,7 +25,6 @@
     border-bottom: 1px solid #ddd;
   }
   
-  /* Forms */
   .checkout-container form {
     background: #fff5e1;
     padding: 15px;
@@ -48,7 +44,6 @@
     border-radius: 5px;
   }
   
-  /* Button */
   .checkout-container .btn-warning {
     width: 100%;
     padding: 12px;

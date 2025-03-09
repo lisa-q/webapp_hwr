@@ -1,20 +1,20 @@
-import { CartItem } from "../models/types";
 import { db } from "../../firebaseConfig";
-import { ref, set, get, remove, push, onValue, off } from "firebase/database";
+import { ref, set, get, remove, onValue, off } from "firebase/database";
+import { CartItem } from "../models/types";
+import DeviceUtils from "./DeviceUtils";
 
+/**
+ * Service for managing the shopping cart processing in Firebase.
+ * Handles adding, removing, updating items to the current cart.
+ */
 class CartFirebaseService {
    
-    private static getDeviceId(): string {
-        let deviceId = localStorage.getItem("device_id");
-        if (!deviceId) {
-            deviceId = crypto.randomUUID();
-            localStorage.setItem("device_id", deviceId);
-        }
-        return deviceId;
-    }
-
+    /**
+     * Fetches the current cart items for the device.
+     * @returns {Promise<CartItem[]>} A promise resolving to the cart items.
+     */
     static async getCurrentCart(): Promise<CartItem[]> {
-        const deviceId = this.getDeviceId();
+        const deviceId = DeviceUtils.getDeviceId();
         const dataRef = ref(db, `carts/${deviceId}`);
         const snapshot = await get(dataRef);
     
@@ -32,8 +32,13 @@ class CartFirebaseService {
         }
     }
     
+     /**
+     * Listens for changes in the cart and invokes a callback with the updated cart items.
+     * @param {function} callback - The function to be called with the updated cart items.
+     * @returns {() => void} A function to unsubscribe from updates.
+     */
     static listenToCart(callback: (cartItems: CartItem[]) => void): () => void {
-        const deviceId = this.getDeviceId();
+        const deviceId = DeviceUtils.getDeviceId();
         const dataRef = ref(db, `carts/${deviceId}`);
         const listener = onValue(dataRef, (snapshot) => {
           if (snapshot.exists()) {
@@ -54,9 +59,12 @@ class CartFirebaseService {
       return () => off(dataRef, "value", listener);
     }
   
-
+    /**
+     * Adds an item to the cart. If the item already exists, increments the quantity.
+     * @param {CartItem} cartItem - The item to add to the cart.
+     */
     static async addToCart(cartItem: CartItem): Promise<void> {
-        const deviceId = this.getDeviceId();
+        const deviceId = DeviceUtils.getDeviceId();
         const dataRef = ref(db, `carts/${deviceId}/${cartItem.id}`);
         const snapshot = await get(dataRef);
     
@@ -69,15 +77,24 @@ class CartFirebaseService {
         }
     }
     
-
+    /**
+     * Removes an item from the cart.
+     * @param {string} cartItemId - The ID of the cart item to remove.
+     */
     static async removeFromCart(cartItemId: string): Promise<void> {
-        const deviceId = this.getDeviceId();
+        const deviceId = DeviceUtils.getDeviceId();
         const dataRef = ref(db, `carts/${deviceId}/${cartItemId}`);
         await remove(dataRef);
     }
 
+    /**
+     * Updates the quantity of a specific cart item.
+     * If the quantity is zero, the item is removed.
+     * @param {string} cartItemId - The ID of the cart item.
+     * @param {number} newQuantity - The new quantity.
+     */
     static async updateQuantityCartItemById(cartItemId: string, newQuantity: number): Promise<void> {
-        const deviceId = this.getDeviceId();
+        const deviceId = DeviceUtils.getDeviceId();
         const itemRef = ref(db, `carts/${deviceId}/${cartItemId}`);
     
         if (newQuantity > 0) {
@@ -86,7 +103,6 @@ class CartFirebaseService {
             if (snapshot.exists()) {
                 const existingData = snapshot.val();
     
-                // Bestehende Daten mit neuer Menge speichern
                 await set(itemRef, {
                     ...existingData,
                     quantity: newQuantity,
@@ -96,49 +112,7 @@ class CartFirebaseService {
             await remove(itemRef);
         }
     }
-    
-    
 
-    static async placeOrder(orderDetails: {
-        address: {
-          name: string;
-          address: string;
-          city: string;
-          postalCode: string;
-          country: string;
-        };
-        shippingMethod: string;
-        paymentMethod: string;
-      }): Promise<void> {
-        const deviceId = this.getDeviceId();
-        const cartItems = await this.getCurrentCart();
-      
-        if (cartItems.length === 0) {
-          throw new Error("Cart is empty, cannot place order.");
-        }
-      
-        const totalPrice = cartItems.reduce((sum, item) => {
-          return sum + (item.price * (item.quantity ?? 1));
-        }, 0);
-      
-        const ordersListRef = ref(db, `orders/${deviceId}`);
-        const newOrderRef = push(ordersListRef);
-      
-        await set(newOrderRef, {
-          createdAt: new Date().toISOString(),
-          address: orderDetails.address,
-          shippingMethod: orderDetails.shippingMethod,
-          paymentMethod: orderDetails.paymentMethod,
-          items: cartItems,
-          totalPrice: parseFloat(totalPrice.toFixed(2))
-        });
-      
-        const cartRef = ref(db, `carts/${deviceId}`);
-        await remove(cartRef);
-      }
-      
-    
-    
 }
 
 export default CartFirebaseService;

@@ -2,6 +2,12 @@ import { useState, useEffect } from "react";
 import CartFirebaseService from "../services/CartFirebaseService";
 import "./CartBatch.css";
 
+/**
+ * A badge component that displays the total quantity of items in the cart.
+ * It listens to real-time cart updates from Firebase.
+ *
+ * @component
+ */
 const CartBadge = () => {
   const [cartCount, setCartCount] = useState(0);
 

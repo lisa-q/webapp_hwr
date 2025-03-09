@@ -1,9 +1,25 @@
 import { useEffect, useState } from "react";
-import { CartItem } from "../models/types";
-import CartFirebaseService from "../services/CartFirebaseService";
 import { useNavigate } from "react-router-dom";
+import { CartItem } from "../models/types";
+import OrderFirebaseService from "../services/OrderFirebaseService";
+import CartFirebaseService from "../services/CartFirebaseService";
 import "./Checkout.css";
 
+/**
+ * Represents the Checkout page for completing an order.
+ *
+ * @component
+ * @description
+ * This component allows users to review their cart items, enter their shipping and payment details,
+ * and place an order. It fetches the current cart items from Firebase and allows the user to fill out
+ * their shipping address, choose a shipping method, and select a payment method.
+ *
+ * The user can either continue shopping or place the order. If the order is successfully placed, the user
+ * is redirected to a thank-you page.
+ *
+ * @example
+ * <Checkout />
+ */
 const Checkout = () => {
   const navigate = useNavigate();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -45,7 +61,7 @@ const Checkout = () => {
     }
 
     try {
-      await CartFirebaseService.placeOrder({
+      await OrderFirebaseService.placeOrder({
         address: {
           name: formData.name,
           address: formData.address,
@@ -73,7 +89,6 @@ const Checkout = () => {
       <h2>Bestellabschluss</h2>
 
       <div className="checkout-layout">
-        {/* Order Summary */}
         <div className="checkout-right">
           <h4>Bestellübersicht</h4>
           <ul className="list-group">
@@ -83,7 +98,7 @@ const Checkout = () => {
                 className="list-group-item d-flex justify-content-between"
               >
                 <span>
-                  {item.name} - {item.quantity}x
+                  {item.quantity}x {item.name}
                 </span>
                 <strong>{item.price} €</strong>
               </li>
@@ -104,9 +119,7 @@ const Checkout = () => {
           </button>
         </div>
 
-        {/* Forms Section */}
         <div className="checkout-left">
-          {/* Address Form */}
           <div className="address-form mt-4">
             <h4>Anschrift</h4>
             <form className="row ">
@@ -154,7 +167,7 @@ const Checkout = () => {
               </div>
               <div className="col-md-4">
                 <label htmlFor="postalCode" className="form-label">
-                  Postleitzahl:
+                  PLZ:
                 </label>
                 <input
                   type="text"
@@ -183,7 +196,6 @@ const Checkout = () => {
             </form>
           </div>
 
-          {/* Shipping */}
           <div className="shipping-form mt-4">
             <h4>Versand</h4>
             <form>
@@ -216,7 +228,6 @@ const Checkout = () => {
             </form>
           </div>
 
-          {/* Payment */}
           <div className="payment-form mt-4">
             <h4>Bezahlung</h4>
             <form>
@@ -241,7 +252,6 @@ const Checkout = () => {
             </form>
           </div>
 
-          {/* Place Order Button */}
           <button className="btn btn-warning mt-4" onClick={handlePlaceOrder}>
             Bestellung aufgeben
           </button>

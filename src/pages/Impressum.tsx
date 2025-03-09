@@ -1,5 +1,13 @@
-// Impressum.tsx
 import "./Impressum.css";
+
+/**
+ * Impressum component for displaying contact information and business hours.
+ * Shows the address, email, phone number, and the shop's opening hours.
+ *
+ * @component
+ * @example
+ * <Impressum />
+ */
 
 const Impressum = () => {
   return (
@@ -13,45 +21,13 @@ const Impressum = () => {
 
           <h3 className="mb-3">Anschrift & Kontakt</h3>
           <p>Furtastic Fashion GmbH</p>
-          <p>Pet Street 123, 56789 Animal Town</p>
-          <p>E-Mail: contact@furtasticfashion.com</p>
+          <p>Haustierstraße 7, 12635 Karottingen</p>
+          <p>E-Mail: contact@furtasticfashion.de</p>
           <p>Telefon: +49 123 456789</p>
-
           <h3 className="mt-4">Öffnungszeiten</h3>
-          <p>Montag - Freitag: 10:00 - 18:00 Uhr</p>
+          <p>Montag - Freitag: 9:00 - 18:00 Uhr</p>
           <p>Samstag: 10:00 - 16:00 Uhr</p>
-          <p>Sonntag: geschlossen</p>
-
-          <h3 className="mt-4">Kontaktiere uns!</h3>
-          <form className="contact-form">
-            <div className="mb-3">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Dein Name"
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <input
-                type="email"
-                className="form-control"
-                placeholder="Deine E-Mail"
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <textarea
-                className="form-control"
-                rows={4}
-                placeholder="Deine Nachricht"
-                required
-              ></textarea>
-            </div>
-            <button type="submit" className="btn btn-success">
-              Abschicken
-            </button>
-          </form>
+          <p>Sonntag: Geschlossen</p>
         </div>
       </div>
     </div>

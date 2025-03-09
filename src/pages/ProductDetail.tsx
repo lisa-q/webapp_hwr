@@ -1,11 +1,23 @@
-import "./ProductDetail.css";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Product } from "../models/types";
 import ProductFirebaseService from "../services/ProductFirebaseService";
 import CartFirebaseService from "../services/CartFirebaseService";
+import "./ProductDetail.css";
+
+/**
+ * ProductDetail component to display detailed information of a single product.
+ * Fetches product data from Firebase based on the product ID from the URL.
+ * Allows adding the product to the cart and navigating back to the shop.
+ *
+ * @component
+ * @example
+ * <ProductDetail />
+ */
+
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
 
   const [product, setProduct] = useState<Product | null>(null);
   useEffect(() => {
@@ -20,6 +32,10 @@ const ProductDetail = () => {
   const handleAddToCart = async (product: Product) => {
     const cartItem = { ...product, quantity: 1 };
     await CartFirebaseService.addToCart(cartItem);
+  };
+
+  const handleBackToShop = () => {
+    navigate("/shop");
   };
 
   if (!product) {
@@ -51,7 +67,13 @@ const ProductDetail = () => {
           </p>
           <p className="product-detail-price">{product.price} €</p>
           <button
-            className="btn btn-success btn-lg"
+            className="btn btn-orange btn-lg me-2"
+            onClick={handleBackToShop}
+          >
+            Zurück zum Shop
+          </button>
+          <button
+            className="btn btn-warning btn-lg"
             onClick={() => handleAddToCart(product)}
           >
             In den Warenkorb

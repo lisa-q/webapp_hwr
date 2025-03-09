@@ -6,10 +6,12 @@ import Navbar from "./components/Navbar";
 import Cart from "./pages/Cart";
 import ProductOverview from "./pages/ProductOverview";
 import ProductDetail from "./pages/ProductDetail";
+import OrderHistory from "./pages/OrderHistory";
 import ThankPage from "./pages/ThankPage";
 import "./App.css";
 
 import Checkout from "./pages/Checkout";
+import MostBoughtItems from "./pages/MostBoughtItems";
 
 function App() {
   return (
@@ -24,7 +26,9 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/shop" element={<ProductOverview />} />
           <Route path="/product/:id" element={<ProductDetail />} />
-            <Route path="/thank-you" element={<ThankPage />} />
+          <Route path="/orderHistory" element={<OrderHistory />} />
+          <Route path="/mostBoughtItems" element={<MostBoughtItems />} />
+          <Route path="/thank-you" element={<ThankPage />} />
         </Routes>
       </div>
     </Router>
