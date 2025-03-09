@@ -1,4 +1,3 @@
-// Impressum.tsx
 import "./Impressum.css";
 
 const Impressum = () => {

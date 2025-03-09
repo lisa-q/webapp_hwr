@@ -1,7 +1,7 @@
-import { CartItem } from "../models/types";
-import { Order } from "../models/types";
 import { db } from "../../firebaseConfig";
 import { ref, set, get, remove, push, onValue, off } from "firebase/database";
+import { CartItem } from "../models/types";
+import { Order } from "../models/types";
 import ProductFirebaseService from "./ProductFirebaseService";
 
 class CartFirebaseService {

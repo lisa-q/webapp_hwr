@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import "./ProductOverview.css";
 import { Link } from "react-router-dom";
 import { Product } from "../models/types";
 import ProductFirebaseService from "../services/ProductFirebaseService";
 import CartFirebaseService from "../services/CartFirebaseService";
+import "./ProductOverview.css";
 
 const ProductOverview = () => {
   const [searchTerm, setSearchTerm] = useState("");

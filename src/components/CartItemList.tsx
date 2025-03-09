@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import CartItemCard from "./CartItemCard";
 import { CartItem } from "../models/types";
 import CartFirebaseService from "../services/CartFirebaseService";
+import CartItemCard from "./CartItemCard";
 import "./CartItemList.css";
 
 const CartItemList = () => {

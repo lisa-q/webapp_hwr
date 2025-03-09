@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import CartFirebaseService from "../services/CartFirebaseService";
 import { Order } from "../models/types";
+import CartFirebaseService from "../services/CartFirebaseService";
 import OrderCard from "../components/OrderCard";
 import "./OrderHistory.css";
 

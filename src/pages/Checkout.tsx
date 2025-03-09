@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { CartItem } from "../models/types";
 import CartFirebaseService from "../services/CartFirebaseService";
-import { useNavigate } from "react-router-dom";
 import "./Checkout.css";
 
 const Checkout = () => {
@@ -126,7 +126,6 @@ const Checkout = () => {
               </div>
               <div className="col-md-6">
                 <label htmlFor="address" className="form-label">
-
                   Straße:
                 </label>
                 <input

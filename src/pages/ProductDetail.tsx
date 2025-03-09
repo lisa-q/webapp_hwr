@@ -1,9 +1,10 @@
-import "./ProductDetail.css";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Product } from "../models/types";
 import ProductFirebaseService from "../services/ProductFirebaseService";
 import CartFirebaseService from "../services/CartFirebaseService";
+import "./ProductDetail.css";
+
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();

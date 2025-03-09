@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { CartItem } from "../models/types";
 import { useNavigate } from "react-router-dom";
-import "./Cart.css";
+import { CartItem } from "../models/types";
 import CartFirebaseService from "../services/CartFirebaseService";
 import CartItemList from "../components/CartItemList";
+import "./Cart.css";
 
 const Cart: React.FC = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);

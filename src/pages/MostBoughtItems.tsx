@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import ProductFirebaseService from "../services/ProductFirebaseService";
 import { Product } from "../models/types";
+import ProductFirebaseService from "../services/ProductFirebaseService";
 import "./MostBoughtItems.css";
+
 const MostBoughtItems = () => {
   const [topProducts, setTopProducts] = useState<Product[]>([]);
 
