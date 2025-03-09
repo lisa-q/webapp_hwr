@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartItem } from "../models/types";
+import OrderFirebaseService from "../services/OrderFirebaseService";
 import CartFirebaseService from "../services/CartFirebaseService";
 import "./Checkout.css";
 
@@ -45,7 +46,7 @@ const Checkout = () => {
     }
 
     try {
-      await CartFirebaseService.placeOrder({
+      await OrderFirebaseService.placeOrder({
         address: {
           name: formData.name,
           address: formData.address,

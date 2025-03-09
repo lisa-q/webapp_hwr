@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Order } from "../models/types";
-import CartFirebaseService from "../services/CartFirebaseService";
+import OrderFirebaseService from "../services/OrderFirebaseService";
 import OrderCard from "../components/OrderCard";
 import "./OrderHistory.css";
 
@@ -9,7 +9,7 @@ const OrderHistory: React.FC = () => {
 
   useEffect(() => {
     const fetchOrders = async () => {
-      const orderList = await CartFirebaseService.getOrderHistory();
+      const orderList = await OrderFirebaseService.getOrderHistory();
       setOrders(orderList);
     };
 
