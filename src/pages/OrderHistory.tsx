@@ -4,6 +4,16 @@ import OrderFirebaseService from "../services/OrderFirebaseService";
 import OrderCard from "../components/OrderCard";
 import "./OrderHistory.css";
 
+/**
+ * OrderHistory component to display a list of past orders and total spending.
+ * Fetches the order history from Firebase and calculates the total amount spent.
+ * Displays individual orders using the OrderCard component.
+ *
+ * @component
+ * @example
+ * <OrderHistory />
+ */
+
 const OrderHistory: React.FC = () => {
   const [orders, setOrders] = useState<Order[]>([]);
 

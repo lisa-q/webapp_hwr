@@ -5,6 +5,16 @@ import ProductFirebaseService from "../services/ProductFirebaseService";
 import CartFirebaseService from "../services/CartFirebaseService";
 import "./ProductOverview.css";
 
+/**
+ * ProductOverview component to display a list of products with search functionality.
+ * Fetches all products from Firebase and allows adding products to the cart.
+ * Includes a search bar to filter products by name.
+ *
+ * @component
+ * @example
+ * <ProductOverview />
+ */
+
 const ProductOverview = () => {
   const [searchTerm, setSearchTerm] = useState("");
 

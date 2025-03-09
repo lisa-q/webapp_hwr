@@ -4,6 +4,18 @@ import CartOverlay from "./CartOverlay";
 import CartBadge from "./CartBatch";
 import "./Navbar.css";
 
+/**
+ * `Navbar` is a React component that renders the navigation bar for the website.
+ * It includes links to different pages such as the shop, most popular items, about page, and order history.
+ * Additionally, it includes a cart icon that toggles a cart overlay when clicked.
+ * The navbar also handles closing the cart overlay when navigating to a different page.
+ *
+ * @component
+ * @example
+ * <Navbar />
+ *
+ * @returns The rendered Navbar component.
+ */
 const Navbar = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
 

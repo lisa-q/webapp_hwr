@@ -8,6 +8,19 @@ interface CartItemCardProps {
   onDelete: (id: string) => void;
 }
 
+/**
+ * `CartItemCard` is a React component that represents a single item in the shopping cart.
+ * It displays the product's information, including its name, price, quantity, and image.
+ * Users can increase or decrease the quantity of the product and remove the item from the cart.
+ *
+ * @component
+ * @example
+ * <CartItemCard cartItem={item} onDelete={handleDelete} />
+ *
+ * @param {Object} props - The properties of the component.
+ * @param {CartItem} props.cartItem - The CartItem object containing the product information.
+ * @param {Function} props.onDelete - A function that is called when the product is deleted from the cart.
+ */
 const CartItemCard: React.FC<CartItemCardProps> = ({ cartItem, onDelete }) => {
   const { id, name, price, quantity, image } = cartItem;
 

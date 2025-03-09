@@ -3,6 +3,16 @@ import { Product } from "../models/types";
 import ProductFirebaseService from "../services/ProductFirebaseService";
 import "./MostBoughtItems.css";
 
+/**
+ * MostBoughtItems component to display the top 3 most bought products.
+ * Fetches the product data from Firebase, sorts it by the number of purchases,
+ * and displays the top 3 products with their images and purchase counts.
+ *
+ * @component
+ * @example
+ * <MostBoughtItems />
+ */
+
 const MostBoughtItems = () => {
   const [topProducts, setTopProducts] = useState<Product[]>([]);
 

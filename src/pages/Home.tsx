@@ -1,6 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
+/**
+ * Home component for the landing page of the application.
+ * Displays a welcome message, a brief description of the shop, and a button to navigate to the product collection.
+ *
+ * @component
+ * @example
+ * <Home />
+ */
 const Home = () => {
   const navigate = useNavigate();
 

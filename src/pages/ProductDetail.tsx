@@ -5,6 +5,16 @@ import ProductFirebaseService from "../services/ProductFirebaseService";
 import CartFirebaseService from "../services/CartFirebaseService";
 import "./ProductDetail.css";
 
+/**
+ * ProductDetail component to display detailed information of a single product.
+ * Fetches product data from Firebase based on the product ID from the URL.
+ * Allows adding the product to the cart and navigating back to the shop.
+ *
+ * @component
+ * @example
+ * <ProductDetail />
+ */
+
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();

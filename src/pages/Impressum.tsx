@@ -1,5 +1,14 @@
 import "./Impressum.css";
 
+/**
+ * Impressum component for displaying contact information and business hours.
+ * Shows the address, email, phone number, and the shop's opening hours.
+ *
+ * @component
+ * @example
+ * <Impressum />
+ */
+
 const Impressum = () => {
   return (
     <div className="impressum-container d-flex align-items-center justify-content-center">

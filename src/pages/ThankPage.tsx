@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
 import "./ThankPage.css";
 
+/**
+ * ThankPage component displayed after a successful order.
+ * Provides the user with options to continue shopping or return to the homepage.
+ *
+ * @component
+ * @example
+ * <ThankPage />
+ */
+
 const ThankPage = () => {
   return (
     <div className="container thank-container">

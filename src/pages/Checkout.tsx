@@ -5,6 +5,21 @@ import OrderFirebaseService from "../services/OrderFirebaseService";
 import CartFirebaseService from "../services/CartFirebaseService";
 import "./Checkout.css";
 
+/**
+ * Represents the Checkout page for completing an order.
+ *
+ * @component
+ * @description
+ * This component allows users to review their cart items, enter their shipping and payment details,
+ * and place an order. It fetches the current cart items from Firebase and allows the user to fill out
+ * their shipping address, choose a shipping method, and select a payment method.
+ *
+ * The user can either continue shopping or place the order. If the order is successfully placed, the user
+ * is redirected to a thank-you page.
+ *
+ * @example
+ * <Checkout />
+ */
 const Checkout = () => {
   const navigate = useNavigate();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);

@@ -5,6 +5,21 @@ import CartFirebaseService from "../services/CartFirebaseService";
 import CartItemList from "../components/CartItemList";
 import "./Cart.css";
 
+/**
+ * Represents the Cart page of the Furtastic Fashion website.
+ *
+ * @component
+ * @description
+ * This component displays the contents of the shopping cart, including the list of cart items,
+ * their quantities, and the total price. It provides buttons for continuing shopping or
+ * proceeding to checkout.
+ *
+ * The component fetches cart items from the Firebase service and displays a message if the cart is empty.
+ * It allows users to either continue shopping or complete their order by navigating to the checkout page.
+ *
+ * @example
+ * <Cart />
+ */
 const Cart: React.FC = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const navigate = useNavigate();
