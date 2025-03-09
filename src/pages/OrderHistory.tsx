@@ -16,7 +16,6 @@ const OrderHistory: React.FC = () => {
     fetchOrders();
   }, []);
 
-  // Berechnung der Gesamtausgaben aller Bestellungen
   const totalSpent = orders.reduce(
     (total, order) => total + order.totalPrice,
     0

@@ -1,5 +1,5 @@
 .navbar-custom {
-  background: linear-gradient(90deg, #d59f4d, #e2a351); /* Gold-Braun Verlauf */
+  background: linear-gradient(90deg, #d59f4d, #e2a351);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -16,7 +16,7 @@
 }
 
 .navbar-custom .nav-link:hover .border-dark {
-  color: #5b5b10; /* Gold beim Hover */
+  color: #5b5b10; 
 }
 
 

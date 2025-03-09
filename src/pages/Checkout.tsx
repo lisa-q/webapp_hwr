@@ -73,7 +73,6 @@ const Checkout = () => {
       <h2>Bestellabschluss</h2>
 
       <div className="checkout-layout">
-        {/* Order Summary */}
         <div className="checkout-right">
           <h4>Bestellübersicht</h4>
           <ul className="list-group">
@@ -104,9 +103,7 @@ const Checkout = () => {
           </button>
         </div>
 
-        {/* Forms Section */}
         <div className="checkout-left">
-          {/* Address Form */}
           <div className="address-form mt-4">
             <h4>Anschrift</h4>
             <form className="row ">
@@ -183,7 +180,6 @@ const Checkout = () => {
             </form>
           </div>
 
-          {/* Shipping */}
           <div className="shipping-form mt-4">
             <h4>Versand</h4>
             <form>
@@ -216,7 +212,6 @@ const Checkout = () => {
             </form>
           </div>
 
-          {/* Payment */}
           <div className="payment-form mt-4">
             <h4>Bezahlung</h4>
             <form>
@@ -241,7 +236,6 @@ const Checkout = () => {
             </form>
           </div>
 
-          {/* Place Order Button */}
           <button className="btn btn-warning mt-4" onClick={handlePlaceOrder}>
             Bestellung aufgeben
           </button>

@@ -27,7 +27,6 @@ const OrderCard: React.FC<OrderCardProps> = ({ order, index }) => {
           📅 {new Date(order.createdAt).toLocaleDateString()}
         </p>
 
-        {/* Scrollbare Liste der gekauften Items */}
         <div className="order-items-container">
           <ul className="list-group list-group-flush">
             {order.items.map((item) => (
