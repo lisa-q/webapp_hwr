@@ -1,54 +1,78 @@
-# React + TypeScript + Vite
+# Webshop README
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📚 Overview
 
-Currently, two official plugins are available:
+This website is a project for the "Webprogrammierung" course taught by Florian Bendschus in the "Spezielle Programmiertechniken" module at HWR Berlin. It was developed by Lisa Kütemeier and Laura Voß. The website is an **online shop for pet fashion**, where users can browse products, add them to the cart, and complete orders. All data is stored securely in Firebase.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+### Pages Overview
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+The website consists of the following pages:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **Pages with Backend communication**:
+  - **Product Overview**: Displays a list of products, fetched from Firebase.
+  - **Product Detail**: Shows detailed information for each product, fetched from Firebase.
+  - **Cart**: Displays the user's cart and communicates with Firebase to store cart data.
+  - **Checkout**: Processes user orders and sends order data to Firebase.
+  - **Most Bought Products**: Displays the 3 most bought products, fetched from Firebase.
+  - **Order History**: Displays past orders, stored in Firebase.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **Pages without Backend communication**:
+  - **Home**: The main landing page of the website.
+  - **Impressum**: Displays contact information and opening hours.
+  - **About**: Information about the idea behind the online shop.
+  - **Thank You**: Confirmation page after completing an order.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🛍️ Features
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- **Browse Products**: View a variety of products with names, prices, and images.
+- **Search**: Find products quickly using the search bar.
+- **Product Details**: View detailed information for each product.
+- **Add to Cart**: Add items to your shopping cart.
+- **Checkout**: Complete your purchase with user details.
+- **Order History**: Track past orders and total spending.
+- **Most Bought Products**: Displays the 3 products that have been bought the most.
+- **Firebase Integration**: Data is stored in Firebase and linked to the user's unique Device ID (stored in local storage).
+
+
+
+## 🔥 Firebase
+
+Firebase is used to store product and order data in real-time. User data is associated with a unique Device ID, ensuring that the cart and orders are stored and accessible even after refreshing the page.
+
+## 🛠️ Technologies
+
+- **React**: A JavaScript library for building interactive UIs.
+- **TypeScript**: Adds static typing to JavaScript for better code management.
+- **Firebase**: Cloud-based platform for data storage and real-time syncing.
+- **CSS/Bootstrap**: For responsive and mobile-friendly styling.
+
+## ⚡ Getting Started
+
+### Prerequisites
+
+- Node.js: [Download here](https://nodejs.org)
+- Firebase credentials 
+  - Stored in a `.env` file for security reasons
+  - Please refer to the "Setup" section below for instructions on how to obtain our Firebase credentials
+
+### Setup
+
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/lisa-q/webapp_hwr
+   cd webapp_hwr
+   ```
+2. Install dependencies:
+    ```bash 
+    npm install
+    ```
+
+3. If the `node_modules` folder is not created, run the following command to install Vite and create the required folder:
+    ```bash
+    npm install vite
+    ```
+
+4. Set up Firebase:
+  - For security reasons, the Firebase key is stored in a `.env` file and is not included in the repository.
+  - The `.env` file should be placed in the root directory and contain our Firebase credentials. The contents of this file can be found at the end of our submitted paper. 
