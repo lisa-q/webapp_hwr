@@ -3,15 +3,12 @@ import { CartItem } from "../models/types";
 import "./CartItemComponent.css";
 import CartFirebaseService from "../services/CartFirebaseService";
 
-interface CartItemComponentProps {
+interface CartItemCardProps {
   cartItem: CartItem;
   onDelete: (id: string) => void;
 }
 
-const CartItemComponent: React.FC<CartItemComponentProps> = ({
-  cartItem,
-  onDelete,
-}) => {
+const CartItemCard: React.FC<CartItemCardProps> = ({ cartItem, onDelete }) => {
   const { id, name, price, quantity, image } = cartItem;
 
   const handleDelete = async () => {
@@ -61,4 +58,4 @@ const CartItemComponent: React.FC<CartItemComponentProps> = ({
   );
 };
 
-export default CartItemComponent;
+export default CartItemCard;

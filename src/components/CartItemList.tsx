@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CartItemComponent from "./CartItemComponent";
+import CartItemCard from "./CartItemCard";
 import { CartItem } from "../models/types";
 import CartFirebaseService from "../services/CartFirebaseService";
 import "./CartItemList.css";
@@ -24,7 +24,7 @@ const CartItemList = () => {
       {cartItems.length > 0 ? (
         <ul className="cart-items">
           {cartItems.map((item) => (
-            <CartItemComponent
+            <CartItemCard
               key={item.id}
               cartItem={item}
               onDelete={handleDeleteItem}
