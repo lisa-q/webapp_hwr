@@ -18,9 +18,9 @@
   
 
   .order-items-container {
-    max-height: 150px; /* Maximale Höhe für die Liste */
-    overflow-y: auto;   /* Scrollen aktivieren, falls nötig */
-    border-radius: 5px; /* Abgerundete Ecken */
+    max-height: 150px; 
+    overflow-y: auto;   
+    border-radius: 5px;
     border: 1px solid #ddd;
     padding: 5px;
   }
