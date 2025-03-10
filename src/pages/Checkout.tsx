@@ -33,6 +33,10 @@ const Checkout = () => {
     payment: "Koala-Kredit",
   });
 
+  /**
+   * Fetches the current cart items from Firebase and updates the state.
+   * This function runs on component mount.
+   */
   useEffect(() => {
     const fetchCartItems = async () => {
       const items = await CartFirebaseService.getCurrentCart();
@@ -41,6 +45,11 @@ const Checkout = () => {
     fetchCartItems();
   }, []);
 
+  /**
+   * Handles input changes in the form fields and updates the state.
+   *
+   * @param {React.ChangeEvent<HTMLInputElement | HTMLSelectElement>} e - The event object containing the input field data.
+   */
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -48,6 +57,10 @@ const Checkout = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  /**
+   * Places an order with the entered details and navigates to the thank-you page.
+   * If required fields are empty, it alerts the user to fill in all fields.
+   */
   const handlePlaceOrder = async () => {
     if (
       !formData.name ||
@@ -80,6 +93,9 @@ const Checkout = () => {
     }
   };
 
+  /**
+   * Navigates the user back to the shop page to continue shopping.
+   */
   const handleContinueShopping = () => {
     navigate("/shop");
   };
