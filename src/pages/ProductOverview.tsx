@@ -1,9 +1,19 @@
 import { useState, useEffect } from "react";
-import "./ProductOverview.css";
 import { Link } from "react-router-dom";
 import { Product } from "../models/types";
 import ProductFirebaseService from "../services/ProductFirebaseService";
 import CartFirebaseService from "../services/CartFirebaseService";
+import "./ProductOverview.css";
+
+/**
+ * ProductOverview component to display a list of products with search functionality.
+ * Fetches all products from Firebase and allows adding products to the cart.
+ * Includes a search bar to filter products by name.
+ *
+ * @component
+ * @example
+ * <ProductOverview />
+ */
 
 const ProductOverview = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -52,11 +62,11 @@ const ProductOverview = () => {
               <div className="card-body text-center">
                 <h5 className="product-name">{product.name}</h5>
                 <p className="product-price">{product.price} €</p>
-                <Link to={`/product/${product.id}`} className="btn btn-success">
+                <Link to={`/product/${product.id}`} className="btn btn-orange">
                   Details ansehen
                 </Link>
                 <button
-                  className="btn btn-primary mt-2"
+                  className="btn btn-warning mt-2"
                   onClick={() => handleAddToCart(product)}
                 >
                   In den Warenkorb

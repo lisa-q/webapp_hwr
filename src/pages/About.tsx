@@ -1,5 +1,18 @@
 import "./About.css";
 
+/**
+ * Represents the About page for the Furtastic Fashion website.
+ *
+ * @component
+ * @description
+ * This component displays information about Furtastic Fashion, including
+ * an introduction to the brand, its values, and its product offerings for pets.
+ * It includes a description of the boutique's mission to provide stylish,
+ * comfortable, and sustainable clothing for pets.
+ *
+ * @example
+ * <About />
+ */
 const About = () => {
   return (
     <div className="about-container d-flex align-items-center justify-content-center">

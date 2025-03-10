@@ -1,21 +1,31 @@
 import React from "react";
 import { CartItem } from "../models/types";
-import "./CartItemComponent.css";
-import CartFirebaseService from "../services/CartFirebaseService"; // Hier geändert
+import CartFirebaseService from "../services/CartFirebaseService";
+import "./CartItemCard.css";
 
-interface CartItemComponentProps {
+interface CartItemCardProps {
   cartItem: CartItem;
   onDelete: (id: string) => void;
 }
 
-const CartItemComponent: React.FC<CartItemComponentProps> = ({
-  cartItem,
-  onDelete,
-}) => {
+/**
+ * `CartItemCard` is a React component that represents a single item in the shopping cart.
+ * It displays the product's information, including its name, price, quantity, and image.
+ * Users can increase or decrease the quantity of the product and remove the item from the cart.
+ *
+ * @component
+ * @example
+ * <CartItemCard cartItem={item} onDelete={handleDelete} />
+ *
+ * @param {Object} props - The properties of the component.
+ * @param {CartItem} props.cartItem - The CartItem object containing the product information.
+ * @param {Function} props.onDelete - A function that is called when the product is deleted from the cart.
+ */
+const CartItemCard: React.FC<CartItemCardProps> = ({ cartItem, onDelete }) => {
   const { id, name, price, quantity, image } = cartItem;
 
   const handleDelete = async () => {
-    await CartFirebaseService.removeFromCart(id); // Hier geändert
+    await CartFirebaseService.removeFromCart(id);
     onDelete(id);
   };
 
@@ -61,4 +71,4 @@ const CartItemComponent: React.FC<CartItemComponentProps> = ({
   );
 };
 
-export default CartItemComponent;
+export default CartItemCard;

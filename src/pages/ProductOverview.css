@@ -13,19 +13,47 @@
 
 .product-list {
     display: flex;
-    flex-wrap: wrap; /* Falls zu viele Produkte vorhanden sind, umbrechen */
+    flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    max-height: 60vh; /* Höhe begrenzen, damit nicht die ganze Seite scrollt */
-    overflow-y: auto; /* Nur die Produktliste scrollen lassen */
+    max-height: 60vh; 
+    overflow-y: auto; 
     padding: 10px;
+    
+    scrollbar-width: thin; 
+    scrollbar-color: #d98c5b #f5f5f5;
+}
+
+.product-list::-webkit-scrollbar {
+    width: 10px;
+}
+
+.product-list::-webkit-scrollbar-track {
+    background: #f5f5f5;
+    border-radius: 10px;
+}
+
+.product-list::-webkit-scrollbar-thumb {
+    background: #d98c5b;
+    border-radius: 10px;
+}
+
+.product-list::-webkit-scrollbar-thumb:hover {
+    background: #ba7448;
 }
 
 .product-card {
     width: 250px;
     border-radius: 15px;
     background-color: white;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
 .product-image {
     width: 100%;
     height: 200px;
@@ -33,11 +61,30 @@
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
+
 .product-name {
     font-weight: bold;
     color: #D2691E;
 }
+
 .product-price {
     color: #555;
     font-size: 18px;
+}
+
+.btn-orange {
+    background-color: #eba370;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn-orange:hover {
+    background-color: #d98c5b;
+}
+
+.btn-warning {
+    border-radius: 8px;
+    padding: 8px 12px;
 }
