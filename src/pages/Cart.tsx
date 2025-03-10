@@ -24,6 +24,9 @@ const Cart: React.FC = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const navigate = useNavigate();
 
+  /**
+   * Fetches the current cart items from Firebase and updates the state.
+   */
   useEffect(() => {
     const fetchCartItems = async () => {
       const items = await CartFirebaseService.getCurrentCart();
@@ -32,10 +35,16 @@ const Cart: React.FC = () => {
     fetchCartItems();
   }, []);
 
+  /**
+   * Navigates to the checkout page.
+   */
   const handleOpenCheckout = () => {
     navigate("/checkout");
   };
 
+  /**
+   * Navigates back to the shop page to continue shopping.
+   */
   const handleContinueShopping = () => {
     navigate("/shop");
   };

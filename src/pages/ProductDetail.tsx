@@ -20,20 +20,36 @@ const ProductDetail = () => {
   const navigate = useNavigate();
 
   const [product, setProduct] = useState<Product | null>(null);
+
+  /**
+   * Fetches the product data from Firebase using the provided product ID.
+   * Updates the state with the fetched product.
+   */
   useEffect(() => {
     if (!id) return;
     const fetchProduct = async () => {
-      const fetchedProduct = await ProductFirebaseService.getProductById(id);
-      setProduct(fetchedProduct);
+      try {
+        const fetchedProduct = await ProductFirebaseService.getProductById(id);
+        setProduct(fetchedProduct);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
     };
     fetchProduct();
-  }, []);
+  }, [id]);
 
+
+  /**
+   * Adds the selected product to the cart with a default quantity of 1.
+   */
   const handleAddToCart = async (product: Product) => {
     const cartItem = { ...product, quantity: 1 };
     await CartFirebaseService.addToCart(cartItem);
   };
 
+  /**
+   * Navigates back to the shop page.
+   */
   const handleBackToShop = () => {
     navigate("/shop");
   };

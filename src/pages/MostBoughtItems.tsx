@@ -16,13 +16,19 @@ import "./MostBoughtItems.css";
 const MostBoughtItems = () => {
   const [topProducts, setTopProducts] = useState<Product[]>([]);
 
+  /**
+   * Fetches all products from Firebase, sorts them by the number of times they were bought,
+   * and updates the state with the top 3 products.
+   */
   useEffect(() => {
     const fetchProducts = async () => {
       const allProducts = await ProductFirebaseService.getAllProducts();
+
+      // Filter out products that don't have a purchase count, then sort in descending order
       const sortedProducts = allProducts
         .filter((product) => product.numberOfBuys)
         .sort((a, b) => (b.numberOfBuys ?? 0) - (a.numberOfBuys ?? 0))
-        .slice(0, 3);
+        .slice(0, 3); // Get the top 3 most bought products
 
       setTopProducts(sortedProducts);
     };

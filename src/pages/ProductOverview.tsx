@@ -19,6 +19,10 @@ const ProductOverview = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const [products, setProducts] = useState<Product[]>([]);
+
+  /**
+   * Fetches all products from Firebase and updates the state.
+   */
   useEffect(() => {
     const fetchProducts = async () => {
       const fetchedProducts = await ProductFirebaseService.getAllProducts();
@@ -27,11 +31,20 @@ const ProductOverview = () => {
     fetchProducts();
   }, []);
 
+  /**
+   * Adds a selected product to the cart with a default quantity of 1.
+   *
+   * @param {Product} product - The product to be added to the cart.
+   * @returns {Promise<void>} A promise that resolves once the product is added.
+   */
   const handleAddToCart = async (product: Product) => {
     const cartItem = { ...product, quantity: 1 };
     await CartFirebaseService.addToCart(cartItem);
   };
 
+  /**
+   * Filters the list of products based on the current search term.
+   */
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
