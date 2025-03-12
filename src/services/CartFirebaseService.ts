@@ -63,7 +63,6 @@ class CartFirebaseService {
         eventSource.onmessage = (event) => {
             try {
                 const cartItems = JSON.parse(event.data);
-                console.log("Empfangene Cart-Items:", cartItems); // Debugging
     
                 if (Array.isArray(cartItems)) {
                     callback(cartItems);

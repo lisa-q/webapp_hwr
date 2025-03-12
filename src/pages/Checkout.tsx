@@ -66,10 +66,7 @@ const Checkout = () => {
    * If required fields are empty, it alerts the user to fill in all fields.
    */
   const handlePlaceOrder = async () => {
-    console.log("cartItems:", cartItems); // Debugging-Ausgabe
-
     if (!Array.isArray(cartItems) || cartItems.length === 0) {
-      console.error("Fehler: cartItems ist leer oder ungültig!", cartItems);
       alert("Dein Warenkorb ist leer.");
       return;
     }
@@ -90,7 +87,6 @@ const Checkout = () => {
         cartItems // ✅ Übergabe der Cart-Items
       );
 
-      console.log("Order placed successfully.");
       navigate("/thank-you");
     } catch (error) {
       console.error("Failed to place order:", error);
