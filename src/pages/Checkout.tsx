@@ -38,11 +38,15 @@ const Checkout = () => {
    * This function runs on component mount.
    */
   useEffect(() => {
-    const fetchCartItems = async () => {
-      const items = await CartFirebaseService.getCurrentCart();
-      setCartItems(items);
-    };
-    fetchCartItems();
+    const unsubscribe = CartFirebaseService.listenToCart((cartItems) => {
+      if (Array.isArray(cartItems)) {
+        setCartItems(cartItems);
+      } else {
+        setCartItems([]); // Falls kein Array, setze leeres Array
+      }
+    });
+
+    return () => unsubscribe();
   }, []);
 
   /**
@@ -62,29 +66,29 @@ const Checkout = () => {
    * If required fields are empty, it alerts the user to fill in all fields.
    */
   const handlePlaceOrder = async () => {
-    if (
-      !formData.name ||
-      !formData.address ||
-      !formData.city ||
-      !formData.postalCode ||
-      !formData.country
-    ) {
-      alert("Bitte fülle alle Adressfelder aus.");
+    console.log("cartItems:", cartItems); // Debugging-Ausgabe
+
+    if (!Array.isArray(cartItems) || cartItems.length === 0) {
+      console.error("Fehler: cartItems ist leer oder ungültig!", cartItems);
+      alert("Dein Warenkorb ist leer.");
       return;
     }
 
     try {
-      await OrderFirebaseService.placeOrder({
-        address: {
-          name: formData.name,
-          address: formData.address,
-          city: formData.city,
-          postalCode: formData.postalCode,
-          country: formData.country,
+      await OrderFirebaseService.placeOrder(
+        {
+          address: {
+            name: formData.name,
+            address: formData.address,
+            city: formData.city,
+            postalCode: formData.postalCode,
+            country: formData.country,
+          },
+          shippingMethod: formData.shipping,
+          paymentMethod: formData.payment,
         },
-        shippingMethod: formData.shipping,
-        paymentMethod: formData.payment,
-      });
+        cartItems // ✅ Übergabe der Cart-Items
+      );
 
       console.log("Order placed successfully.");
       navigate("/thank-you");
@@ -108,22 +112,29 @@ const Checkout = () => {
         <div className="checkout-right">
           <h4>Bestellübersicht</h4>
           <ul className="list-group">
-            {cartItems.map((item) => (
-              <li
-                key={item.id}
-                className="list-group-item d-flex justify-content-between"
-              >
-                <span>
-                  {item.quantity}x {item.name}
-                </span>
-                <strong>{item.price} €</strong>
-              </li>
-            ))}
+            {Array.isArray(cartItems) &&
+              cartItems
+                .filter((item) => item && item.price !== undefined)
+                .map((item) => (
+                  <li
+                    key={item.id}
+                    className="list-group-item d-flex justify-content-between"
+                  >
+                    <span>
+                      {item.quantity}x {item.name}
+                    </span>
+                    <strong>{item.price} €</strong>
+                  </li>
+                ))}
           </ul>
           <h3 className="total-price">
             Gesamt:{" "}
             {cartItems
-              .reduce((total, item) => total + item.quantity * item.price, 0)
+              .filter((item) => item && item.quantity && item.price)
+              .reduce(
+                (total, item) => total + (item.quantity * item.price || 0),
+                0
+              )
               .toFixed(2)}{" "}
             €
           </h3>
