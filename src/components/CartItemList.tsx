@@ -4,23 +4,11 @@ import CartFirebaseService from "../services/CartFirebaseService";
 import CartItemCard from "./CartItemCard";
 import "./CartItemList.css";
 
-/**
- * `CartItemList` is a React component that displays a list of items in the shopping cart.
- * It listens to updates from Firebase to populate the cart and allows users to delete items.
- * If the cart is empty, a message indicating the empty cart is shown.
- *
- * @component
- * @example
- * <CartItemList />
- *
- * @returns The rendered CartItemList component.
- */
 const CartItemList = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   useEffect(() => {
     const unsubscribe = CartFirebaseService.listenToCart(setCartItems);
-
     return () => {
       unsubscribe();
     };
@@ -30,8 +18,19 @@ const CartItemList = () => {
     await CartFirebaseService.removeFromCart(id);
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
+
+  // Gesamtpreis berechnen
+  const totalPrice = cartItems
+    .filter((item) => item && item.quantity && item.price) // Fehlerhafte Einträge entfernen
+    .reduce((total, item) => total + item.quantity * item.price, 0)
+    .toFixed(2);
+
   return (
     <div className="cart-items-container">
+      {/* Gesamtpreis anzeigen */}
+      <div className="cart-total">
+        <h4>Gesamt: {totalPrice} €</h4>
+      </div>
       {cartItems.length > 0 ? (
         <ul className="cart-items">
           {cartItems.map((item) => (
