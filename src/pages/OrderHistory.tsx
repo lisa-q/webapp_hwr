@@ -17,6 +17,10 @@ import "./OrderHistory.css";
 const OrderHistory: React.FC = () => {
   const [orders, setOrders] = useState<Order[]>([]);
 
+  /**
+   * Fetches order history from Firebase when the component mounts.
+   * Updates the state with the retrieved order list.
+   */
   useEffect(() => {
     const fetchOrders = async () => {
       const orderList = await OrderFirebaseService.getOrderHistory();
@@ -26,6 +30,11 @@ const OrderHistory: React.FC = () => {
     fetchOrders();
   }, []);
 
+  /**
+   * Calculates the total amount spent on all orders.
+   *
+   * @returns {number} Total amount spent.
+   */
   const totalSpent = orders.reduce(
     (total, order) => total + order.totalPrice,
     0
