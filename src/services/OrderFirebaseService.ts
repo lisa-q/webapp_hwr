@@ -1,20 +1,18 @@
-import { db } from "../../firebaseConfig";
-import { ref, set, get, remove, push } from "firebase/database";
-import { Order} from "../models/types";
-import ProductFirebaseService from "./ProductFirebaseService";
-import CartFirebaseService from "./CartFirebaseService";
+import axios from "axios";
+import { Order } from "../models/types";
 import DeviceUtils from "./DeviceUtils";
+import { CartItem } from "../models/types";
+
+const API_BASE_URL = "http://localhost:5000/orders";
 
 /**
- * Service for managing orders in Firebase.
+ * Service for managing orders via backend API.
  */
-class OrderFirebaseService {
-    
-
-
+class OrderService {
     /**
-     * Places an order with the given details and clears the cart.
-     * @param {object} orderDetails - The order details including address, shipping, and payment method.
+     * Erstellt eine neue Bestellung und übergibt die Cart-Items explizit.
+     * @param {object} orderDetails - Die Bestelldetails (Adresse, Versand, Zahlung).
+     * @param {CartItem[]} cartItems - Die zu bestellenden Warenkorbartikel.
      */
     static async placeOrder(orderDetails: {
         address: {
@@ -26,37 +24,28 @@ class OrderFirebaseService {
         };
         shippingMethod: string;
         paymentMethod: string;
-    }): Promise<void> {
+    }, cartItems: CartItem[]): Promise<void> {
         const deviceId = DeviceUtils.getDeviceId();
-        const cartItems = await CartFirebaseService.getCurrentCart();
 
-        if (cartItems.length === 0) {
+        // 🔹 Prüfen, ob cartItems leer sind
+        if (!cartItems || cartItems.length === 0) {
             throw new Error("Cart is empty, cannot place order.");
         }
 
+        // 🔹 Berechnung des Gesamtpreises mit validierten Items
         const totalPrice = cartItems.reduce((sum, item) => {
             return sum + (item.price * (item.quantity ?? 1));
         }, 0);
 
-        const ordersListRef = ref(db, `orders/${deviceId}`);
-        const newOrderRef = push(ordersListRef);
-
-        await set(newOrderRef, {
+        await axios.post(`${API_BASE_URL}/create`, {
+            deviceId,
             createdAt: new Date().toISOString(),
-            address: orderDetails.address,
-            shippingMethod: orderDetails.shippingMethod,
-            paymentMethod: orderDetails.paymentMethod,
-            items: cartItems,
-            totalPrice: parseFloat(totalPrice.toFixed(2))
+            orderDetails,
+            cartItems,
+            totalPrice: parseFloat(totalPrice.toFixed(2)),
         });
-
-        for (const item of cartItems) {
-            await ProductFirebaseService.incrementNumberOfBuys(item.id, item.quantity ?? 1);
-        }
-
-        const cartRef = ref(db, `carts/${deviceId}`);
-        await remove(cartRef);
     }
+    
 
     /**
      * Retrieves the order history for the current device.
@@ -64,22 +53,9 @@ class OrderFirebaseService {
      */
     static async getOrderHistory(): Promise<Order[]> {
         const deviceId = DeviceUtils.getDeviceId();
-        const ordersRef = ref(db, `orders/${deviceId}`);
-        const snapshot = await get(ordersRef);
-    
-        if (snapshot.exists()) {
-            const ordersObject = snapshot.val();
-            return Object.entries(ordersObject).map(([key, value]) => {
-                const orderData = value as Omit<Order, "id">; 
-                return {
-                    id: key, 
-                    ...orderData 
-                };
-            });
-        } else {
-            return [];
-        }
+        const response = await axios.get(`${API_BASE_URL}/history/${deviceId}`);
+        return response.data;
     }
 }
 
-export default OrderFirebaseService;
+export default OrderService;

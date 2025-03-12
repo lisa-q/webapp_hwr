@@ -1,64 +1,44 @@
-import { db } from "../../firebaseConfig";
-import { ref, set, get, onValue, off, remove } from "firebase/database";
+import axios from "axios";
 import { Product } from "../models/types";
 
+const API_BASE_URL = "http://localhost:5000/products";
 
 /**
- * Service class for handling product-related operations in Firebase Realtime Database.
+ * Service-Klasse für Produktoperationen über das Backend-API.
  */
-class ProductFirebaseService {
-
-     /**
-     * Retrieves all products from the database.
-     * @returns {Promise<Product[]>} A promise that resolves to an array of products.
+class ProductService {
+    /**
+     * Ruft alle Produkte über das Backend ab.
+     * @returns {Promise<Product[]>} Ein Promise, das eine Liste von Produkten zurückgibt.
      */
     static async getAllProducts(): Promise<Product[]> {
-        const dataRef = ref(db, "products");
-        const snapshot = await get(dataRef);
-    
-        if (snapshot.exists()) {
-            const productsObject = snapshot.val();
-            return Object.entries(productsObject).map(([key, value]) => {
-                const productData = value as Omit<Product, "id">;
-                return {
-                    id: key,
-                    ...productData
-                };
-            });
-        } else {
-            return [];
-        }
+        const response = await axios.get(`${API_BASE_URL}`);
+        return response.data;
     }
-    
+
     /**
-     * Retrieves a single product by its ID.
-     * @param {string} productId - The ID of the product to retrieve.
-     * @returns {Promise<Product | null>} A promise that resolves to the product or null if not found.
+     * Ruft ein einzelnes Produkt anhand seiner ID ab.
+     * @param {string} productId - Die ID des Produkts.
+     * @returns {Promise<Product | null>} Ein Promise, das das Produkt oder `null` zurückgibt.
      */
     static async getProductById(productId: string): Promise<Product | null> {
-        const dataRef = ref(db, `products/${productId}`);
-        const snapshot = await get(dataRef);
-
-        if (snapshot.exists()) {
-            return { id: productId, ...snapshot.val() } as Product;
-        } else {
+        try {
+            const response = await axios.get(`${API_BASE_URL}/${productId}`);
+            return response.data;
+        } catch (error) {
+            console.error("Produkt nicht gefunden:", error);
             return null;
         }
     }
 
     /**
-     * Increments the number of times a product has been purchased.
-     * @param {string} productId - The ID of the product.
-     * @param {number} amount - The amount to increment the purchase count by.
-     * @returns {Promise<void>} A promise that resolves when the update is complete.
+     * Erhöht die Anzahl der Käufe eines Produkts.
+     * @param {string} productId - Die ID des Produkts.
+     * @param {number} amount - Die Anzahl, um die die Käufe erhöht werden sollen.
      */
     static async incrementNumberOfBuys(productId: string, amount: number): Promise<void> {
-        const productRef = ref(db, `products/${productId}/numberOfBuys`);
-        const snapshot = await get(productRef);
-        const currentBuys = snapshot.exists() ? snapshot.val() : 0;
-        await set(productRef, currentBuys + amount);
+        await axios.put(`${API_BASE_URL}/${productId}/incrementBuys`, { amount });
     }
-    
 }
 
-export default ProductFirebaseService;
+export default ProductService;
