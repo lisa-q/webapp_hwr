@@ -4,7 +4,10 @@ import { db } from "../firebaseAdmin.js";
 const router = express.Router();
 
 /**
- * 📜 Bestellhistorie abrufen
+ * Retrieves the order history for a specific device.
+ * @route GET /history/:deviceId
+ * @param {string} deviceId - The unique identifier of the device.
+ * @returns {Object[]} Array of order objects if found, otherwise a 404 error.
  */
 router.get("/history/:deviceId", async (req, res) => {
     const { deviceId } = req.params;  // ✅ URL-Parameter verwenden
@@ -24,7 +27,12 @@ router.get("/history/:deviceId", async (req, res) => {
   
 
 /**
- * 🛍️ Neue Bestellung anlegen
+ * Creates a new order for a specific device.
+ * @route POST /create
+ * @param {string} deviceId - The unique identifier of the device.
+ * @param {Object} orderDetails - Details of the order including address, shipping method, and payment method.
+ * @param {Object[]} cartItems - List of items in the cart.
+ * @returns {Object} Success message upon order creation, otherwise a 400 error if the cart is empty.
  */
 router.post("/create", async (req, res) => {
     const { deviceId, orderDetails, cartItems } = req.body;

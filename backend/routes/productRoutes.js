@@ -4,7 +4,10 @@ import { db } from "../firebaseAdmin.js";
 const router = express.Router();
 
 /**
- * 📦 Alle Produkte abrufen
+ * Retrieves all available products from the database.
+ * @route GET /products
+ * @returns {Object[]} 200 - An array of product objects
+ * @returns {Object[]} 200 - An empty array if no products are found
  */
 router.get("/", async (req, res) => {
     const productsRef = db.ref("products");
@@ -22,7 +25,11 @@ router.get("/", async (req, res) => {
 });
 
 /**
- * 🔍 Einzelnes Produkt nach ID abrufen
+ * Retrieves a specific product by its ID.
+ * @route GET /products/{productId}
+ * @param {string} productId - The unique identifier of the product
+ * @returns {Object} 200 - The product object
+ * @returns {Object} 404 - Error message if the product is not found
  */
 router.get("/:productId", async (req, res) => {
     const { productId } = req.params;
@@ -37,7 +44,11 @@ router.get("/:productId", async (req, res) => {
 });
 
 /**
- * 📈 Anzahl der Käufe für ein Produkt erhöhen
+ * Increments the number of purchases for a specific product.
+ * @route PUT /products/{productId}/incrementBuys
+ * @param {string} productId - The unique identifier of the product
+ * @param {number} amount - The amount to increment the purchase count
+ * @returns {Object} 200 - Success message with updated number of purchases
  */
 router.put("/:productId/incrementBuys", async (req, res) => {
     const { productId } = req.params;

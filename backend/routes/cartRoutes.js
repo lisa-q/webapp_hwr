@@ -5,7 +5,12 @@ const router = express.Router();
 
 
 /**
- * ➕ Ein Produkt zum Warenkorb hinzufügen
+ * Adds a product to the shopping cart. If the product already exists, its quantity is incremented.
+ * @route POST /add
+ * @param {string} req.body.deviceId - The unique identifier of the user's device.
+ * @param {Object} req.body.cartItem - The item to be added to the cart.
+ * @param {string} req.body.cartItem.id - The unique identifier of the product.
+ * @returns {Object} JSON response indicating success.
  */
 router.post("/add", async (req, res) => {
   const { deviceId, cartItem } = req.body;
@@ -24,7 +29,11 @@ router.post("/add", async (req, res) => {
 });
 
 /**
- * 🗑️ Ein Produkt aus dem Warenkorb entfernen
+ * Removes a specific product from the shopping cart.
+ * @route DELETE /:cartItemId
+ * @param {string} req.query.deviceId - The unique identifier of the user's device.
+ * @param {string} req.params.cartItemId - The ID of the item to remove.
+ * @returns {Object} JSON response indicating success.
  */
 router.delete("/:cartItemId", async (req, res) => {
   const { deviceId } = req.query;
@@ -34,7 +43,10 @@ router.delete("/:cartItemId", async (req, res) => {
 });
 
 /**
- * 🔄 Den gesamten Warenkorb leeren
+ * Clears all items from the user's shopping cart.
+ * @route DELETE /clear
+ * @param {string} req.query.deviceId - The unique identifier of the user's device.
+ * @returns {Object} JSON response indicating success.
  */
 router.delete("/clear", async (req, res) => {
   const { deviceId } = req.query;
@@ -43,18 +55,18 @@ router.delete("/clear", async (req, res) => {
 });
 
 /**
- * 🎧 Echtzeit-Listener für den Warenkorb eines Geräts
+ * Sets up a real-time listener for cart updates using Server-Sent Events (SSE).
+ * @route GET /listen/:deviceId
+ * @param {string} req.params.deviceId - The unique identifier of the user's device.
  */
 router.get("/listen/:deviceId", (req, res) => {
     const { deviceId } = req.params;
     const cartRef = db.ref(`carts/${deviceId}`);
 
-    // Set headers für Server-Sent Events (SSE)
     res.setHeader("Content-Type", "text/event-stream");
     res.setHeader("Cache-Control", "no-cache");
     res.setHeader("Connection", "keep-alive");
 
-    // Send initial connection message
     res.write("event: connected\n");
     res.write(`data: "Listening for cart updates for device ${deviceId}"\n\n`);
 
@@ -70,18 +82,24 @@ router.get("/listen/:deviceId", (req, res) => {
         }
     };
 
-    // Firebase Listener für Echtzeit-Updates
     cartRef.on("value", sendCartUpdate);
 
-    // Verbindung schließen & Listener entfernen, wenn Client trennt
     req.on("close", () => {
         cartRef.off("value", sendCartUpdate);
         res.end();
     });
 });
 
+/**
+ * Updates the quantity of a specific item in the shopping cart.
+ * @route PUT /update/:cartItemId
+ * @param {string} req.query.deviceId - The unique identifier of the user's device.
+ * @param {string} req.params.cartItemId - The ID of the item to update.
+ * @param {number} req.body.newQuantity - The new quantity of the item.
+ * @returns {Object} JSON response indicating success.
+ */
 router.put("/update/:cartItemId", async (req, res) => {
-    const { deviceId } = req.query;  // Hole deviceId aus der Query
+    const { deviceId } = req.query;  
     const { cartItemId } = req.params;
     const { newQuantity } = req.body;
 
@@ -98,23 +116,6 @@ router.put("/update/:cartItemId", async (req, res) => {
 
     await itemRef.update({ quantity: newQuantity });
     res.json({ message: "Artikelmenge aktualisiert" });
-});
-
-router.get("/cart/:deviceId", async (req, res) => {
-    const { deviceId } = req.params;
-
-    if (!deviceId) {
-        return res.status(400).json({ message: "Device ID fehlt" });
-    }
-
-    const cartRef = db.ref(`carts/${deviceId}`);
-    const snapshot = await cartRef.get();
-
-    if (!snapshot.exists()) {
-        return res.status(404).json({ message: "Warenkorb nicht gefunden" });
-    }
-
-    res.json(snapshot.exists() ? snapshot.val() : []);
 });
 
 export default router;
