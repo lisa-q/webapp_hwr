@@ -9,10 +9,10 @@ const API_BASE_URL = "http://localhost:5000/orders";
  * Service for managing orders via backend API.
  */
 class OrderService {
-    /**
-     * Erstellt eine neue Bestellung und übergibt die Cart-Items explizit.
-     * @param {object} orderDetails - Die Bestelldetails (Adresse, Versand, Zahlung).
-     * @param {CartItem[]} cartItems - Die zu bestellenden Warenkorbartikel.
+      /**
+     * Creates a new order and explicitly includes the cart items.
+     * @param {object} orderDetails - The order details (address, shipping, payment).
+     * @param {CartItem[]} cartItems - The cart items to be ordered.
      */
     static async placeOrder(orderDetails: {
         address: {
@@ -27,12 +27,10 @@ class OrderService {
     }, cartItems: CartItem[]): Promise<void> {
         const deviceId = DeviceUtils.getDeviceId();
 
-        // 🔹 Prüfen, ob cartItems leer sind
         if (!cartItems || cartItems.length === 0) {
             throw new Error("Cart is empty, cannot place order.");
         }
 
-        // 🔹 Berechnung des Gesamtpreises mit validierten Items
         const totalPrice = cartItems.reduce((sum, item) => {
             return sum + (item.price * (item.quantity ?? 1));
         }, 0);

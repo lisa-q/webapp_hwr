@@ -49,13 +49,20 @@ class CartFirebaseService {
     }
 
     /**
-     * Löscht den gesamten Warenkorb.
+     * Clears all items from the cart.
+     * @returns {Promise<void>} A promise that resolves when the cart is cleared.
+     * @throws {Error} If the API request fails.
      */
     static async clearCart(): Promise<void> {
         const deviceId = DeviceUtils.getDeviceId();
         await axios.delete(`${API_BASE_URL}/clear?deviceId=${deviceId}`);
     }
 
+    /**
+     * Listens for real-time cart updates and executes the provided callback when updates occur.
+     * @param {(cartItems: CartItem[]) => void} callback - A function to be called when cart updates are received.
+     * @returns {() => void} A function to stop listening to cart updates.
+     */
     static listenToCart(callback: (cartItems: CartItem[]) => void): () => void {
         const deviceId = DeviceUtils.getDeviceId();
         const eventSource = new EventSource(`${API_BASE_URL}/listen/${deviceId}`);
@@ -68,7 +75,7 @@ class CartFirebaseService {
                     callback(cartItems);
                 } else {
                     console.warn("Fehlformatierte Cart-Daten:", cartItems);
-                    callback([]); // Fallback zu leerem Array
+                    callback([]); 
                 }
             } catch (error) {
                 console.error("Fehler beim Parsen der Cart-Daten:", error);
