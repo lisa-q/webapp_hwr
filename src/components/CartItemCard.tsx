@@ -40,7 +40,7 @@ const CartItemCard: React.FC<CartItemCardProps> = ({ cartItem, onDelete }) => {
         <img src={image} alt={name} className="cart-item-img me-3" />
         <div className="cart-item-details flex-grow-1">
           <h6 className="card-title">{name}</h6>
-          <p className="card-text d-flex align-items-center">
+          <div className="card-text d-flex align-items-center">
             Anzahl: {quantity}{" "}
             <div className="quantity-controls ms-3">
               {quantity > 1 && (
@@ -58,7 +58,7 @@ const CartItemCard: React.FC<CartItemCardProps> = ({ cartItem, onDelete }) => {
                 +
               </button>
             </div>
-          </p>
+          </div>
         </div>
         <div className="cart-item-price">
           <strong>{(price * quantity).toFixed(2)} €</strong>
