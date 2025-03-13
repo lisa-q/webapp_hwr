@@ -71,20 +71,20 @@ const Checkout = () => {
       return;
     }
 
+    const { name, address, city, postalCode, country } = formData;
+    if (!name || !address || !city || !postalCode || !country) {
+      alert("Bitte fülle alle Adressfelder aus.");
+      return;
+    }
+
     try {
       await OrderFirebaseService.placeOrder(
         {
-          address: {
-            name: formData.name,
-            address: formData.address,
-            city: formData.city,
-            postalCode: formData.postalCode,
-            country: formData.country,
-          },
+          address: { name, address, city, postalCode, country },
           shippingMethod: formData.shipping,
           paymentMethod: formData.payment,
         },
-        cartItems // ✅ Übergabe der Cart-Items
+        cartItems
       );
 
       navigate("/thank-you");
@@ -92,7 +92,6 @@ const Checkout = () => {
       console.error("Failed to place order:", error);
     }
   };
-
   /**
    * Navigates the user back to the shop page to continue shopping.
    */
