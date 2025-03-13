@@ -33,6 +33,7 @@ The website consists of the following pages:
 - **Order History**: Track past orders and total spending.
 - **Most Bought Products**: Displays the 3 products that have been bought the most.
 - **Firebase Integration**: Data is stored in Firebase and linked to the user's unique Device ID (stored in local storage).
+- **Express.js Backend**: All data is processed via an Express.js backend that communicates with Firebase.
 
 
 
@@ -43,7 +44,7 @@ Firebase is used to store product and order data in real-time. User data is asso
 ## 🛠️ Technologies
 
 - **React**: A JavaScript library for building interactive UIs.
-- **TypeScript**: Adds static typing to JavaScript for better code management.
+- **Express.js**: Backend framework handling all communication with Firebase.
 - **Firebase**: Cloud-based platform for data storage and real-time syncing.
 - **CSS/Bootstrap**: For responsive and mobile-friendly styling.
 
@@ -68,11 +69,29 @@ Firebase is used to store product and order data in real-time. User data is asso
     npm install
     ```
 
-3. If the `node_modules` folder is not created, run the following command to install Vite and create the required folder:
-    ```bash
-    npm install vite
-    ```
+3. Set up Firebase:
+  - For security reasons, the Firebase credentials are stored in a `.env` file and are not included in the repository.
+  - The `.env` file should be placed in the backend folder and contain our Firebase credentials. The contents of this file can be found at the end of our submitted paper. 
 
-4. Set up Firebase:
-  - For security reasons, the Firebase key is stored in a `.env` file and is not included in the repository.
-  - The `.env` file should be placed in the root directory and contain our Firebase credentials. The contents of this file can be found at the end of our submitted paper. 
+4. Set up the backend:
+  - Navigate to the `backend` folder: 
+    ```bash
+    cd backend
+    ```
+  - Install backend dependencies: 
+    ```bash
+    npm install
+    ```
+  - Start the backend server:
+    ```bash
+    node server.js
+    ```
+5. Start the frontend application:
+  - Open a new terminal and navigate back to the root folder:
+      ```bash
+      cd ..
+      ```
+  - Start the React application:
+      ```bash
+      npm run dev
+      ```
