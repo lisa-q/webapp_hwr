@@ -2,6 +2,7 @@ import axios from "axios";
 import { Order } from "../models/types";
 import DeviceUtils from "./DeviceUtils";
 import { CartItem } from "../models/types";
+import ProductService from "./ProductFirebaseService";
 
 const API_BASE_URL = "http://localhost:5000/orders";
 
@@ -11,6 +12,7 @@ const API_BASE_URL = "http://localhost:5000/orders";
 class OrderService {
       /**
      * Creates a new order and explicitly includes the cart items.
+     * Also increments the purchase count for each product.
      * @param {object} orderDetails - The order details (address, shipping, payment).
      * @param {CartItem[]} cartItems - The cart items to be ordered.
      */
@@ -42,7 +44,12 @@ class OrderService {
             cartItems,
             totalPrice: parseFloat(totalPrice.toFixed(2)),
         });
+
+        for (const item of cartItems) {
+            await ProductService.incrementNumberOfBuys(item.id, item.quantity ?? 1);
+        }
     }
+
     
 
     /**
